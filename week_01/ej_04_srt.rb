@@ -5,6 +5,8 @@ class SRT
 		@segments = []
 		@typos = []
 		@profanity_filter = []
+		read_file
+		create_dictionary
 	end
 
 	def read_file
@@ -38,6 +40,32 @@ class SRT
 
 	end
 
+	def correct_time(time_ms)
+		@segments.each do |segment|
+			#  00:42:40,138
+			segment.time_start = segment.time_start.gsub(/,/,'').slice(6,5).to_i + time_ms
+			segment.time_end = segment.time_end.gsub(/,/,'').slice(6,5).to_i + time_ms
+		end
+	end
+
+	def create_dictionary
+		fd_dictionary = File.new('/usr/share/dict/words')
+		@@dictionary = fd_dictionary.readlines
+		@@dictionary.each do | word |
+			word.chomp!
+		end
+		puts "#{@@dictionary.size} words in the dictionary"
+	end
+
+	def find_typos
+		@segments.each do | segment |
+			clean_string = segment.string.gsub(/[\.,;:!\?]/,'')
+			segment_word_list = clean_string.gsub(/<\/?i>/,'').split
+			puts segment_word_list.inspect
+		end 
+	end
+
+
 end
 
 class Segment
@@ -63,4 +91,5 @@ class Segment
 end
 
 srt = SRT.new("sub.srt")
-srt.read_file
+srt.correct_time(2500)
+srt.find_typos
