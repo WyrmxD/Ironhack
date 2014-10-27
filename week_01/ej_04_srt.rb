@@ -103,9 +103,19 @@ class SRT
 			segment_word_list.each do | word |
 				if !@@dictionary.include?(word.downcase) then
 					# search in typo
-					typo = Typo.new(word)
-					typo.times.push(segment.time_start)
-					@typos.push(typo)
+					found = false
+					@typos.each do | readed_typo |
+						if (readed_typo.word == word) then
+							readed_typo.times.push(segment.time_start)
+							found = true
+						end
+					end
+
+					if !found then
+						typo = Typo.new(word)
+						typo.times.push(segment.time_start)
+						@typos.push(typo)
+					end
 				end
 			end
 		end 
@@ -144,6 +154,7 @@ end
 class Typo
 
 	attr_accessor :times
+	attr_accessor :word
 
 	def initialize(word)
 		@word = word
