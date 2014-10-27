@@ -4,7 +4,6 @@ class SRT
 		@fd = File.new(file_name)
 		@segments = []
 		@typos = []
-		@profanity_filter = []
 		read_file
 		create_dictionary
 	end
@@ -24,14 +23,14 @@ class SRT
 				if (segment.number == 0) then
 					# add sequence
 					segment.number = line.to_i
-				elsif (segment.time_start.empty?) then
+				elsif (segment.start_time.empty?) then
 					# add times
 					time = line.split(' --> ')
-					segment.time_start = time[0]
-					segment.time_end = time[1]
+					segment.start_time = time[0]
+					segment.end_time = time[1]
 				else
 					# add strings
-					segment.string << line
+					segment.string << "#{line} "
 				end
 			end			
 		end
@@ -42,8 +41,8 @@ class SRT
 
 	def correct_time(time_ms)
 		@segments.each do |segment|
-			segment.time_start = miliseconds_to_string(string_to_miliseconds(segment.time_start) + time_ms)
-			segment.time_end = miliseconds_to_string(string_to_miliseconds(segment.time_end) + time_ms)
+			segment.start_time = miliseconds_to_string(string_to_miliseconds(segment.start_time) + time_ms)
+			segment.end_time = miliseconds_to_string(string_to_miliseconds(segment.end_time) + time_ms)
 		end
 	end
 
@@ -106,14 +105,14 @@ class SRT
 					found = false
 					@typos.each do | readed_typo |
 						if (readed_typo.word == word) then
-							readed_typo.times.push(segment.time_start)
+							readed_typo.times.push(segment.start_time)
 							found = true
 						end
 					end
 
 					if !found then
 						typo = Typo.new(word)
-						typo.times.push(segment.time_start)
+						typo.times.push(segment.start_time)
 						@typos.push(typo)
 					end
 				end
@@ -127,25 +126,36 @@ class SRT
 		end
 	end
 
+	def censor
+		@segments.each do |segment|
+			t_parts = segment.start_time.gsub(/,/,':').split(':')
+			t_hours = t_parts[0].to_i
+			minutes = t_parts[1].to_i + t_hours * 60
+			if(minutes <= 30) then
+				segment.string = segment.string.downcase.gsub(/[fuck]/,'CENSORED')
+			end
+		end
+	end
+
 end
 
 class Segment
 
 	attr_accessor :number
-	attr_accessor :time_start
-	attr_accessor :time_end
+	attr_accessor :start_time
+	attr_accessor :end_time
 	attr_accessor :string
 
 	def initialize()
 		@number = 0
-		@time_start = ""
-		@time_end = ""
+		@start_time = ""
+		@end_time = ""
 		@string = ""
 	end
 
 	def describe
 		puts "##{@number}:"
-		puts " start: #{@time_start} end: #{@time_end}"
+		puts " start: #{@start_time} end: #{@end_time}"
 		puts " string: "
 		puts "   #{@string}"
 	end 
@@ -173,3 +183,4 @@ srt = SRT.new("sub.srt")
 srt.correct_time(2500)
 srt.find_typos
 srt.print_typos
+srt.censor
