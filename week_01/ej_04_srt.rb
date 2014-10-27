@@ -42,10 +42,49 @@ class SRT
 
 	def correct_time(time_ms)
 		@segments.each do |segment|
-			#  00:42:40,138
-			segment.time_start = segment.time_start.gsub(/,/,'').slice(6,5).to_i + time_ms
-			segment.time_end = segment.time_end.gsub(/,/,'').slice(6,5).to_i + time_ms
+			segment.time_start = miliseconds_to_string(string_to_miliseconds(segment.time_start) + time_ms)
+			segment.time_end = miliseconds_to_string(string_to_miliseconds(segment.time_end) + time_ms)
 		end
+	end
+
+	def string_to_miliseconds(time_string)
+		t_parts = time_string.gsub(/,/,':').split(':')
+		t_hours = t_parts[0].to_i
+		t_minutes = t_parts[1].to_i
+		t_seconds = t_parts[2].to_i
+		t_mseconds = t_parts[3].to_i 
+
+		t_total = t_mseconds + t_seconds * 1000 + t_minutes * 60 * 1000 + t_hours * 3600 * 1000
+	end
+
+	def miliseconds_to_string(time_ms)
+		mseconds = time_ms % 1000
+		x = time_ms / 1000
+		seconds = x % 60
+		x /= 60
+		minutes = x % 60
+		x /= 60
+		hours = x % 24
+
+		if(hours.to_s.size < 2) then
+			hours = "0#{hours}"
+		end
+
+		if(minutes.to_s.size < 2) then
+			minutes = "0#{minutes}"
+		end
+
+		if(seconds.to_s.size < 2) then
+			seconds = "0#{seconds}"
+		end
+
+		if(mseconds.to_s.size < 2) then
+			mseconds = "00#{mseconds}"
+		elsif(mseconds.to_s.size < 3) then
+			mseconds = "0#{mseconds}"
+		end
+		
+		return "#{hours}:#{minutes}:#{seconds},#{mseconds}"
 	end
 
 	def create_dictionary
@@ -61,10 +100,22 @@ class SRT
 		@segments.each do | segment |
 			clean_string = segment.string.gsub(/[\.,;:!\?]/,'')
 			segment_word_list = clean_string.gsub(/<\/?i>/,'').split
-			puts segment_word_list.inspect
+			segment_word_list.each do | word |
+				if !@@dictionary.include?(word.downcase) then
+					# search in typo
+					typo = Typo.new(word)
+					typo.times.push(segment.time_start)
+					@typos.push(typo)
+				end
+			end
 		end 
 	end
 
+	def print_typos
+		@typos.each do | typo |
+			typo.describe
+		end
+	end
 
 end
 
@@ -90,6 +141,24 @@ class Segment
 	end 
 end
 
+class Typo
+
+	attr_accessor :times
+
+	def initialize(word)
+		@word = word
+		@times = []
+	end
+
+	def describe
+		puts "word: #{@word}"
+		@times.each do | time |
+			puts " time: #{time}"
+		end
+	end
+end
+
 srt = SRT.new("sub.srt")
 srt.correct_time(2500)
 srt.find_typos
+srt.print_typos
