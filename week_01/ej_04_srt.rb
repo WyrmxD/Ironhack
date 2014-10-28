@@ -4,6 +4,7 @@ class SRT
 		@fd = File.new(file_name)
 		@segments = []
 		@typos = []
+		@ignored_words = []
 		read_file
 		create_dictionary
 	end
@@ -41,8 +42,8 @@ class SRT
 
 	def correct_time(time_ms)
 		@segments.each do |segment|
-			segment.start_time = miliseconds_to_string(string_to_miliseconds(segment.start_time) + time_ms)
-			segment.end_time = miliseconds_to_string(string_to_miliseconds(segment.end_time) + time_ms)
+			segment.start_time = miliseconds_to_string( string_to_miliseconds(segment.start_time) + time_ms )
+			segment.end_time = miliseconds_to_string( string_to_miliseconds(segment.end_time) + time_ms )
 		end
 	end
 
@@ -100,24 +101,27 @@ class SRT
 			clean_string = segment.string.gsub(/[\.,;:!\?]/,'')
 			segment_word_list = clean_string.gsub(/<\/?i>/,'').split
 			segment_word_list.each do | word |
-				if !@@dictionary.include?(word.downcase) then
-					# search in typo
-					found = false
-					@typos.each do | readed_typo |
-						if (readed_typo.word == word) then
-							readed_typo.times.push(segment.start_time)
-							found = true
-						end
-					end
-
-					if !found then
-						typo = Typo.new(word)
-						typo.times.push(segment.start_time)
-						@typos.push(typo)
-					end
+				if ( !@@dictionary.include?(word.downcase) && !is_ignored_word(word) ) then
+					search_in_typos(word, segment.start_time)
 				end
 			end
 		end 
+	end
+
+	def search_in_typos(word, segment_time)
+		found = false
+		@typos.each do | readed_typo |
+			if (readed_typo.word == word) then
+				readed_typo.times.push(segment_time)
+				found = true
+			end
+		end
+
+		if !found then
+			typo = Typo.new(word)
+			typo.times.push(segment_time)
+			@typos.push(typo)
+		end
 	end
 
 	def print_typos
@@ -136,6 +140,20 @@ class SRT
 			end
 		end
 	end
+
+	def is_ignored_word(word)
+		if(@ignored_words.empty?) then
+			return false
+		end
+		return @ignored_words.include?(word)
+	end
+
+	def add_ignored_word(word)
+		@ignored_words.push(word)
+	end
+
+	private :read_file, :string_to_miliseconds, :miliseconds_to_string
+	private :create_dictionary
 
 end
 
@@ -181,6 +199,8 @@ end
 
 srt = SRT.new("sub.srt")
 srt.correct_time(2500)
+srt.add_ignored_word('Alex')
+srt.add_ignored_word('Mary')
 srt.find_typos
 srt.print_typos
 srt.censor
