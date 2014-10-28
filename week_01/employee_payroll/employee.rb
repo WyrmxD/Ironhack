@@ -2,10 +2,11 @@ class Employee
 	
 	def initialize(name)
 		@name = name
+		@salary = 0
 	end
 
 	def to_s
-		"Employee: #{@name}"
+		"#{@name} -> #{@salary}"
 	end
 end
 

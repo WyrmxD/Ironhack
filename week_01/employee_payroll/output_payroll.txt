@@ -1,0 +1,4 @@
+Alfredo -> 1000
+Juan -> 2000
+Steven -> 2500
+Peter -> 1400

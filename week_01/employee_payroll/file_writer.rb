@@ -4,4 +4,9 @@ class File_writer
 		@fd = File.new(file_name, 'w')
 	end
 
+	def write(employee)
+		@fd.write(employee.to_s + "\n")
+		# TODO: what about closing files
+	end
+
 end

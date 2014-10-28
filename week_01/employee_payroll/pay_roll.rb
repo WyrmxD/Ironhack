@@ -25,3 +25,5 @@ fragmented_lines.each do | line |
 end
 
 puts ikea.to_s
+
+ikea.write_pay_roll

@@ -14,14 +14,14 @@ class Enterprise
 
 	def write_pay_roll
 		@employees.each do | employee |
-			@output.write(employee.salary)
+			@output.write(employee.to_s)
 		end
 	end
 
 	def to_s
 		ret = "Enterprise name: #{@name}\n"
 		@employees.each do | employee |
-			ret << "\t#{employee.to_s} , salary: #{employee.calc_salary}\n"
+			ret << "\t#{employee.to_s}\n"
 		end
 		ret
 	end
