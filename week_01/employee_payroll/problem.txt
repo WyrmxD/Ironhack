@@ -1,0 +1,28 @@
+Calculate employee payroll
+We want to write a program that can calculate the payroll for the employees of a company. This company has 3 types of employees: Employees with base salary Employees that work for hours, payroll is calculated with: number of hours x hour rate Employees with base salary plus hours, payroll is calculated with the sum The company have a file with the employee data for a given month:
+
+Base Alfredo 1000
+Hour Juan 40 50 
+Hour Steven 50 50
+BasePlusHour Peter 1000 10 40
+the first element indicates the type of employee, the second is the name. For base employees the third element is base salary. for Hour the third element is the number of hours and the fourth element is the rate. For BasePlusHour you third is base salary and the rest equal to the hour employee.
+
+First step: Create a file with the month payroll
+
+Alfredo -> 1000
+Juan -> 2000
+Steven -> 2500
+Peter -> 1400
+Second step: Payroll notifications
+
+The company wants to send a notification to his employees when the payroll is calculated, the employees can select if they want the notification via mail, via sms or via a direct message in twitter. The company give us a new employee file with this information:
+
+Base Alfredo @AlfredoCasado 1000
+Hour Juan juan@gmail.com 40 50 
+Hour Steven 605242478 50 50
+BasePlusHour Peter peter@gmail.com 1000 10 40
+In this new file the third element represent the user direction, we can easily know given this “direction” if the user want a mail, sms or twitter notification.
+
+For simplicity we don’t go to send this notifications for real, is enough to put a message in the console when our program execute that says “payroll notification send to Alfredo via twitter”.
+
+Is important for this exercise considering that the company probably want to include new methods for sending notifications in the near future, think in the cost of change of adding a new method.

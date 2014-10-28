@@ -1,0 +1,4 @@
+Base Alfredo 1000
+Hour Juan 40 50 
+Hour Steven 50 50
+BasePlusHour Peter 1000 10 40
