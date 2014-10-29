@@ -1,7 +1,8 @@
 class Employee
 	
-	def initialize(name)
+	def initialize(name, notification)
 		@name = name
+		@notification = notification
 		@salary = 0
 	end
 
@@ -14,10 +15,11 @@ class EmployeeBase < Employee
 
 	attr_reader :salary
 	
-	def initialize(name, base)
-		super(name)
+	def initialize(name, base, notification=nil)
+		super(name, notification)
 		@base = base.to_i
 		@salary = calc_salary
+		@notification = notification
 	end
 
 	def calc_salary
@@ -29,8 +31,8 @@ class EmployeeHour < Employee
 
 	attr_reader :salary
 	
-	def initialize(name, hour, rate)
-		super(name)
+	def initialize(name, hour, rate, notification=nil)
+		super(name, notification)
 		@hour = hour.to_i
 		@rate = rate.to_i
 		@salary = calc_salary
@@ -45,8 +47,8 @@ class EmployeeBasePlusHour < Employee
 
 	attr_reader :salary
 	
-	def initialize(name, base, hour, rate)
-		super(name)
+	def initialize(name, base, hour, rate, notification=nil)
+		super(name, notification)
 		@base = base.to_i
 		@hour = hour.to_i
 		@rate = rate.to_i
