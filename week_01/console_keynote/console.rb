@@ -6,7 +6,6 @@ class Console
 
 	def start(slides)
 		@slides = slides
-		puts TermInfo.screen_size.inspect
 		show_slide(@@actual_slide)
 		read_command()
 	end
@@ -16,7 +15,6 @@ class Console
 		loop do |variable|
 			print "> "
 			command = gets.chomp
-
 			case command.downcase
 			when 'quit', 'q'
 				break
