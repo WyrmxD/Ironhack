@@ -2,11 +2,10 @@ require 'terminfo'
 
 class Console
 
-	@@actual_slide = 0
-
 	def start(slides)
 		@slides = slides
-		show_slide(@@actual_slide)
+		@actual_slide = 0
+		show_slide(@actual_slide)
 		read_command()
 	end
 
@@ -22,23 +21,34 @@ class Console
 				next_slide()
 			when 'previous', 'p'
 				previous_slide()
+			when 'auto', 'a'
+				automatic()
 			else
 			end
 		end
 	end
 
-	def next_slide
-		if(@@actual_slide < @slides.count-1) then
-			@@actual_slide += 1
+	def automatic
+
+		@slides.each do | slide |
+			show_slide(@actual_slide)
+			sleep(3)
+			@actual_slide += 1
 		end
-		show_slide(@@actual_slide)
+	end
+
+	def next_slide
+		if(@actual_slide < @slides.count-1) then
+			@actual_slide += 1
+		end
+		show_slide(@actual_slide)
 	end
 
 	def previous_slide()
-		if(@@actual_slide > 0) then
-			@@actual_slide -= 1
+		if(@actual_slide > 0) then
+			@actual_slide -= 1
 		end
-		show_slide(@@actual_slide)
+		show_slide(@actual_slide)
 	end
 
 	def show_slide(slide_number)
@@ -60,7 +70,7 @@ class Console
 		for i in 1..(num_blanks_after) do
 			puts 
 		end
-		puts "[slide ##{@@actual_slide+1}]"
+		puts "[slide ##{@actual_slide+1}/#{@slides.count}]"
 	end
 
 end

@@ -23,7 +23,6 @@ class Keynote
 	end
 
 	def start
-		# run console
 		@console.start(@slides)
 	end
 	

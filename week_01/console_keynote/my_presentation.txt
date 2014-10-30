@@ -4,5 +4,7 @@ The iTerminal
 ----
 Is here
 ----
-Y esto es todo
-See you
+******************
+* Y esto es todo *
+*     See you    *
+******************
