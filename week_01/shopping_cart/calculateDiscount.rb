@@ -1,12 +1,8 @@
 class CalculateDiscount
-	def initialize (item_list, table_prices)
+	def initialize (item_list, table_prices, discount_list)
 		@item_list = item_list
 		@table_prices = table_prices
-		@discount_list = [
-			DiscountApple.new(@table_prices.cost_item(:apples)), 
-			DiscountOrange.new(@table_prices.cost_item(:oranges)), 
-			DiscountGrapes.new(@table_prices.cost_item(:banana))
-		]
+		@discount_list = discount_list
 	end
 
 	def apply_discounts

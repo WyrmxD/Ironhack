@@ -6,7 +6,12 @@ class ShoppingCart
 	def initialize
 		@table_prices = TablePrices.new
 		@item_list = []
-		@discount = CalculateDiscount.new(@item_list, @table_prices)
+		discounts = [
+			DiscountApple.new(@table_prices.cost_item(:apples)), 
+			DiscountOrange.new(@table_prices.cost_item(:oranges)), 
+			DiscountGrapes.new(@table_prices.cost_item(:banana))
+		]
+		@discount = CalculateDiscount.new(@item_list, @table_prices, discounts)
 	end
 
 	def add (additem)
