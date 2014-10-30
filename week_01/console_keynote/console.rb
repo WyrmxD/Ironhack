@@ -1,11 +1,12 @@
-require 'terminfo'
+require './player.rb'
 
 class Console
 
 	def start(slides)
-		@slides = slides
-		@actual_slide = 0
-		show_slide(@actual_slide)
+		# @slides = slides
+		# @actual_slide = 0
+		@player = Player.new(slides)
+		@player.show_slide(0)
 		read_command()
 	end
 
@@ -18,59 +19,14 @@ class Console
 			when 'quit', 'q'
 				break
 			when 'next', 'n'
-				next_slide()
+				@player.next_slide()
 			when 'previous', 'p'
-				previous_slide()
+				@player.previous_slide()
 			when 'auto', 'a'
-				automatic()
+				@player.automatic()
 			else
 			end
 		end
-	end
-
-	def automatic
-
-		@slides.each do | slide |
-			show_slide(@actual_slide)
-			sleep(3)
-			@actual_slide += 1
-		end
-	end
-
-	def next_slide
-		if(@actual_slide < @slides.count-1) then
-			@actual_slide += 1
-		end
-		show_slide(@actual_slide)
-	end
-
-	def previous_slide()
-		if(@actual_slide > 0) then
-			@actual_slide -= 1
-		end
-		show_slide(@actual_slide)
-	end
-
-	def show_slide(slide_number)
-		height, width = TermInfo.screen_size
-		slide_text = @slides[slide_number].content
-
-		num_text_lines = slide_text.split("\n").count
-		num_blanks_before = (height.to_i - num_text_lines - 2 ) / 2
-		num_blanks_after = ( (height.to_i - num_text_lines - 2 ) / 2.0 ).ceil
-
-		for i in 1..(num_blanks_before) do
-			puts 
-		end
-		slide_text.split("\n").each do | text_line |
-			left_margin = (width - text_line.size) / 2
-			puts " " * left_margin + text_line.gsub("\n","\n" + " " * left_margin)
-		end
-		
-		for i in 1..(num_blanks_after) do
-			puts 
-		end
-		puts "[slide ##{@actual_slide+1}/#{@slides.count}]"
 	end
 
 end
