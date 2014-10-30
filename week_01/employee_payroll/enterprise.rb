@@ -11,28 +11,6 @@ class Enterprise
 
 	def load_employees
 
-
-		#load_employess_v1()
-
-		# fragmented_lines = @input.get_fragmented_lines
-		# puts "fragmented_lines #{fragmented_lines.inspect}"
-		# fragmented_lines.each do | line |
-
-		# 	case line[0]
-		# 	when 'Base'
-		# 		employee = EmployeeBase.new(line[1], line[2])
-		# 	when 'Hour'
-		# 		employee = EmployeeHour.new(line[1], line[2], line[3])
-		# 	else
-		# 		employee = EmployeeBasePlusHour.new(line[1], line[2], line[3], line[4])
-		# 	end
-
-		# 	if(!employee.nil?) then
-		# 		puts "Adding #{employee.inspect}"
-		# 		add_employee(employee)	
-		# 	end
-		# end
-
 		version = file_version()
 		puts "Loading from #{version}"
 		if version == :version1 then
