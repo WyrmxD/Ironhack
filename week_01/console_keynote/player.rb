@@ -1,33 +1,26 @@
 require 'terminfo'
 
 class Player
+
+	attr_reader :commands
 	
 	def initialize(slides)
 		@slides = slides
 		@actual_slide = 0
+		@commands = {
+			:next_slide => NextCommand.new(@slides, @actual_slide),
+			:previous_slide => PreviousCommand.new(@slides, @actual_slide),
+			:automatic => AutommaticCommand.new(@slides, @actual_slide),
+			:show_slide => Command.new(@slides, @actual_slide)
+		}
 	end
+	
+end
 
-	def automatic
-
-		for i in @actual_slide..@slides.count-1 do
-			@actual_slide = i
-			show_slide(@actual_slide)
-			sleep(3)
-		end
-	end
-
-	def next_slide
-		if(@actual_slide < @slides.count-1) then
-			@actual_slide += 1
-		end
-		show_slide(@actual_slide)
-	end
-
-	def previous_slide()
-		if(@actual_slide > 0) then
-			@actual_slide -= 1
-		end
-		show_slide(@actual_slide)
+class Command
+	def initialize(slides, actual_slide)
+		@slides = slides
+		@@actual_slide = actual_slide
 	end
 
 	def show_slide(slide_number)
@@ -42,7 +35,7 @@ class Player
 		print_slide_content(slide_text, terminal_width)
 		print_blanks(num_blanks_after)	
 		
-		puts "[slide ##{@actual_slide+1}/#{@slides.count}]"
+		puts "[slide ##{@@actual_slide+1}/#{@slides.count}]"
 	end
 
 	def print_slide_content(slide_text, terminal_width)
@@ -53,9 +46,48 @@ class Player
 	end
 
 	def print_blanks(num)
-		for i in 1..(num) do
-			puts 
-		end
+		print "\n" * num
+	end
+end
+
+class NextCommand < Command
+	
+	def initialize(slides, actual_slide)
+		super(slides, actual_slide)
 	end
 	
+	def run
+		if(@@actual_slide < @slides.count-1) then
+			@@actual_slide += 1
+		end
+		show_slide(@@actual_slide)
+	end	
+end
+
+class PreviousCommand < Command
+	def initialize(slides, actual_slide)
+		super(slides, actual_slide)
+	end
+
+	def run
+		if(@@actual_slide > 0) then
+			@@actual_slide -= 1
+		end
+		show_slide(@@actual_slide)
+	end	
+	
+end
+
+class AutommaticCommand < Command
+	def initialize(slides, actual_slide)
+		super(slides, actual_slide)
+	end
+
+	def run
+		for i in @@actual_slide..@slides.count-1 do
+			@@actual_slide = i
+			show_slide(@@actual_slide)
+			sleep(3)
+		end
+	end
 end
