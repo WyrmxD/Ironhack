@@ -3,8 +3,9 @@ require './player.rb'
 class Console
 
 	def start(slides)
+		@current_slide = 0
 		@player = Player.new(slides)
-		@player.commands[:next_slide].show_slide(0)
+		@player.commands[:next_slide].show_slide(@current_slide)
 		read_command()
 	end
 
@@ -17,14 +18,11 @@ class Console
 			when 'quit', 'q'
 				break
 			when 'next', 'n'
-				#@player.next_slide()
-				@player.commands[:next_slide].run
+				@current_slide = @player.commands[:next_slide].run(@current_slide)
 			when 'previous', 'p'
-				#@player.previous_slide()
-				@player.commands[:previous_slide].run
+				@current_slide = @player.commands[:previous_slide].run(@current_slide)
 			when 'auto', 'a'
-				#@player.automatic()
-				@player.commands[:automatic].run
+				@current_slide = @player.commands[:automatic].run(@current_slide)
 			else
 			end
 		end

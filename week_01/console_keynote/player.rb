@@ -6,21 +6,20 @@ class Player
 	
 	def initialize(slides)
 		@slides = slides
-		@actual_slide = 0
+		@current_slide = 0
 		@commands = {
-			:next_slide => NextCommand.new(@slides, @actual_slide),
-			:previous_slide => PreviousCommand.new(@slides, @actual_slide),
-			:automatic => AutommaticCommand.new(@slides, @actual_slide),
-			:show_slide => Command.new(@slides, @actual_slide)
+			:next_slide => NextCommand.new(@slides),
+			:previous_slide => PreviousCommand.new(@slides),
+			:automatic => AutommaticCommand.new(@slides),
+			:show_slide => Command.new(@slides)
 		}
 	end
 	
 end
 
 class Command
-	def initialize(slides, actual_slide)
+	def initialize(slides)
 		@slides = slides
-		@@actual_slide = actual_slide
 	end
 
 	def show_slide(slide_number)
@@ -35,7 +34,7 @@ class Command
 		print_slide_content(slide_text, terminal_width)
 		print_blanks(num_blanks_after)	
 		
-		puts "[slide ##{@@actual_slide+1}/#{@slides.count}]"
+		puts "[slide ##{slide_number+1}/#{@slides.count}]"
 	end
 
 	def print_slide_content(slide_text, terminal_width)
@@ -52,42 +51,50 @@ end
 
 class NextCommand < Command
 	
-	def initialize(slides, actual_slide)
-		super(slides, actual_slide)
+	def initialize(slides)
+		super(slides)
 	end
 	
-	def run
-		if(@@actual_slide < @slides.count-1) then
-			@@actual_slide += 1
+	def run(current_slide)
+		if(current_slide < @slides.count-1) then
+			current_slide += 1
 		end
-		show_slide(@@actual_slide)
+		show_slide(current_slide)
+		
+		return current_slide
 	end	
+
 end
 
 class PreviousCommand < Command
-	def initialize(slides, actual_slide)
-		super(slides, actual_slide)
+	def initialize(slides)
+		super(slides)
 	end
 
-	def run
-		if(@@actual_slide > 0) then
-			@@actual_slide -= 1
+	def run(current_slide)
+		if(current_slide > 0) then
+			current_slide -= 1
 		end
-		show_slide(@@actual_slide)
+		show_slide(current_slide)
+		
+		return current_slide
 	end	
 	
 end
 
 class AutommaticCommand < Command
-	def initialize(slides, actual_slide)
-		super(slides, actual_slide)
+	def initialize(slides)
+		super(slides)
+		@waitting_seconds = 3
 	end
 
-	def run
-		for i in @@actual_slide..@slides.count-1 do
-			@@actual_slide = i
-			show_slide(@@actual_slide)
-			sleep(3)
+	def run(current_slide)
+		for i in current_slide..@slides.count-1 do
+			current_slide = i
+			show_slide(current_slide)
+			sleep(@waitting_seconds)
 		end
+		
+		return current_slide
 	end
 end
