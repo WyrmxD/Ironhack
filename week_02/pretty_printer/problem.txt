@@ -1,0 +1,44 @@
+Pretty printer
+Problem Description
+Printing the contents of an array is always a pain in the ass. Write a class that has a method that receives an array and prints it beautifully in the console.
+
+For example if you have an array like this
+
+a_hash = {key: "value", other_key: "other_value"}
+a_date = Date.today
+
+PrettyPrinter.new.print(["My", 3, a_hash, a_date, ["Pied", "Piper"] ])
+the output should be something like the following
+
+Array:
+  My
+  3
+  Hash:
+    key -> value
+    other_key -> other_value
+  12-07-2014
+  Array:
+    Pied
+    Piper
+If you receive an object you don't know how to print you should show an error message instead. For example:
+
+class A
+end
+
+Prettyprinter.new.print([A.new])
+Should output
+
+Array:
+    An object I don't know how to print
+Hints:
+
+To know the type of an object you can use .is_a? method.
+Suggested iterations
+Create a printed that accepts an object and prints it or an error. This should only print the arrays as before or errors.
+Add the printer for strings and numbers and add it to the printer before
+Add the printer for dates
+Create a printer for arrays that just prints each element
+Make the printing recursive. This means you can print an array inside an array
+Add the printer for hashes. Can this print a hash if the key or the value is an object?
+Extra ball
+If possible, make the printing customizable easily. This means that somebody can print the date in a different format or add information about the size of the array easily.
