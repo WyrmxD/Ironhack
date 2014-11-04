@@ -5,27 +5,29 @@ class StringCalculator
 			return 0
 		end
 
-		@separator = get_separator(string_numbers)
-		number_list = get_number_list(string_numbers)
+		@string_numbers = string_numbers
+		@separator = get_separator()
+		
+		number_list = get_number_list()
 
 		if has_negative_numbers(number_list) then
-			raise "negatives not allowed"
+			raise_negatives_not_allowed()
 		end
 
 		return sum_array(number_list)
 		
 	end
 
-	def get_number_list(string_numbers)
-		if has_separator_at_beggining(string_numbers) then
-			number_list = string_numbers[4..-1].split(@separator)
+	def get_number_list()
+		if has_separator_at_beggining(@string_numbers) then
+			number_list = @string_numbers[4..-1].split(@separator)
 		else
-			number_list = string_numbers.split(@separator)
+			number_list = @string_numbers.split(@separator)
 		end
 	end
 
-	def get_separator(string_numbers)
-		matches = /\/\/(.{1})\n/.match(string_numbers)
+	def get_separator()
+		matches = /\/\/(.{1})\n/.match(@string_numbers)
 		if(matches.nil?) then 
 			return ","
 		end
@@ -54,6 +56,10 @@ class StringCalculator
 			return false
 		end
 		return true
+	end
+
+	def raise_negatives_not_allowed
+		raise "negatives not allowed"
 	end
 
 end
