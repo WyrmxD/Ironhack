@@ -77,4 +77,15 @@ RSpec.describe "Pretty Printer" do
 		expect( printer.print(var) ).to eq(output)
 	end
 
+	it "print hash with 3 items" do
+		var = {key: 100, key2: "another", key3: 300}
+		output = "Hash:\n\tkey --> 100\n\tkey2 --> another\n\tkey3 --> 300\n"
+		expect( printer.print(var) ).to eq(output)	
+	end
+
+	it "print array with array" do
+		var = [ [ 200, 300]]
+		output = "Array:\n\tArray:\n\t\t200\n\t\t300\n"
+		expect( printer.print(var) ).to eq(output)
+	end
 end

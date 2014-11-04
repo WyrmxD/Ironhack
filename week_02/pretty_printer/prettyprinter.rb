@@ -10,11 +10,9 @@ class Prettyprinter
 			if @var_to_print.size == 1 then
 				return "Hash:\n\t#{@var_to_print.keys[0].to_s} --> #{@var_to_print.values[0].to_s}\n"
 			else
-				#element = @var_to_print.fetch[@var_to_print.keys[0]]
 				last_key = @var_to_print.keys[ @var_to_print.keys.size-1 ]
 				last_value = @var_to_print[last_key]
 				@var_to_print.delete(last_key)
-				#@var_to_print.delete(element[0])
 				output_string = "#{last_key.to_s} --> #{last_value.to_s}\n"
 				return self.print(@var_to_print) + "\t" + output_string
 			end
