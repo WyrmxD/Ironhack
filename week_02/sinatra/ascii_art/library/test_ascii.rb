@@ -14,4 +14,9 @@ RSpec.describe "Ascii Printer" do
     	word = "A"
     	expect( printer.print(word).to eq())
     end
+
+    it "print more than one letter" do
+    	word = "Abasdasd"
+    	expect( printer.print(word).to eq())
+    end
 end

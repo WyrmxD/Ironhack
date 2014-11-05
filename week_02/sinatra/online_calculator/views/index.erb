@@ -1,0 +1,7 @@
+<%= ERB.new(File.read("./views/calc_form.erb")).result(binding) %>
+
+<% if defined? @result %>
+<p>
+<%=@result%>
+</p>
+<% end %>
