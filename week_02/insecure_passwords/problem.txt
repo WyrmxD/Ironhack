@@ -1,0 +1,13 @@
+Insecure passwords
+Imagine you are writing a program that analyses is the password provided by a user is strong enough. We will provide a method that will be invoked like
+
+PasswordChecker.check_password(email, password)
+This method will email the user if the password is not secure.
+
+The password will not be secure is one of the following is not fulfilled:
+
+The password is shorter than 7 characters
+The password contains a letter, a number and a symbol
+The password contains some uppercase and lowercase letter
+The password does not contain nor the name on the email nor the domain of the email. For example: rafa@ironhack.com -> password 12rafaT$LLL is not valid.
+Please, TDD the solution. You can mock the email service.

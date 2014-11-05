@@ -72,7 +72,11 @@ class Checkdigits
 	def build_hundred(digit)
 		hundred,ten,one = get_digit_parts(digit)
 		right_segment = (ten.to_s + one.to_s).to_i
-		number_to_string = "#{@@simple_digit[hundred]} hundred"
+		number_to_string = "#{@@simple_digit[hundred]} hundred#{build_hundred_right_segment(right_segment)}"	
+	end
+
+	def build_hundred_right_segment(right_segment)
+		number_to_string = ""
 		if(right_segment != 0) then 
 			if right_segment <= 9 then
 				number_to_string << " " + build_simple(one)
@@ -86,7 +90,11 @@ class Checkdigits
 	def build_thousand(digit)
 		thousand, hundred,ten,one = get_digit_parts(digit)
 		right_segment = (hundred.to_s + ten.to_s + one.to_s).to_i
-		number_to_string = "#{@@simple_digit[thousand]} thousand"
+		number_to_string = "#{@@simple_digit[thousand]} thousand#{build_thousand_right_segment(right_segment, hundred, ten, one)}"
+	end
+
+	def build_thousand_right_segment(right_segment, hundred, ten, one)
+		number_to_string = ""
 		if right_segment != 0 then
 			if( hundred != 0 )
 				number_to_string << " " + build_hundred(hundred)
