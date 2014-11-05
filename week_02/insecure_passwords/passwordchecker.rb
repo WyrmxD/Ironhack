@@ -1,7 +1,13 @@
-class Passwordchecker
-	
-	def check_password(email, password)
+class Checker
 
-	end 
+	def initialize(mailer)
+		@mailer = mailer		
+	end
+	
+	def check_password(password)
+		if password == nil
+			@mailer.send_mail
+		end
+	end
 	
 end
