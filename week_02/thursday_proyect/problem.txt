@@ -1,0 +1,27 @@
+SinatraMDB trivial
+We are holding a party! You know how parties are at Ironhack so expect no snacks here. In our case we will hold a movie party but fear not, we are not watching "Elvira, mistress of the dark" again. We are building a simple game for movie lovers.
+
+Iteration 1
+In the beginning the web will ask us for a word.
+Then it will look on IMDB for different movies that contain that word.
+It will show 9 posters of that movies
+The it will ask "Which of the movies was filmed in year xxxx?"
+The user will be allowed to click in each of the movies and it will receive feedback about being right or wrong.
+Iteration 2
+It will check that there are no 2 movies filmed in that year
+If there are not enough movies with that word it will inform the user and add new movies
+Iteration 3
+Add a predefined subset of words to the game so it chooses one random word instead of asking the user
+If you want you can use this dictionary
+Iteration 4
+Now the program can ask for both the year of a movie or a member of its cast. Remember to check the other movies for the cast member being there.
+Iteration 5
+No logic should be in get or post handlers except instantiating a class and calling a method on it.
+Add a CLI (command line interface) so you can play from the console. It can send the URLs of the images through the console at the beginning
+Iteration 6
+Send the name of the movie instead of the poster to the CLI
+Iteration 7
+If we spam Heroku constantly it will break our connections. Implement a caching mechanism for images. This means. Once you need to get one image from IMDB save it in your hard disk. The next time we ask for the movie you should check if it is in the cache. If it is there don't download it again.
+Hints
+You can use IMDB gem
+If you are deploying this software anywhere take into account that IMDB blocks connections incoming from Heroku or the such.
