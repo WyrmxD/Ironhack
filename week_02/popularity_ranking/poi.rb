@@ -1,7 +1,6 @@
 class Poi
 
-	attr_reader :visits
-	attr_reader :name, :address
+	attr_reader :visits, :name, :address
 	
 	def initialize(name, address)
 		@name = name
@@ -11,6 +10,10 @@ class Poi
 	
 	def add_visit(num=1)
 		@visits += num
+	end
+
+	def num_comments
+		
 	end
 	
 end
