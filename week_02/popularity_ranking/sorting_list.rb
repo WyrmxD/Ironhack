@@ -4,8 +4,8 @@ class SortingList
 		@sorting_list = {}
 	end
 
-	def add_criteria(criteria)
-		@sorting_list[criteria.key] = criteria.process
+	def add_criteria(key, process)
+		@sorting_list[key] = process
 	end
 
 	def get_criteria(key)
