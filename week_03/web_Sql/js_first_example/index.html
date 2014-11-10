@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5: WebSQL</title>
+</head>
+<body>
+  <h1>Hello World 2</h1>
+  <script src="websql.js"></script>
+  <script src="storage.js"></script>
+  <script>
+    var fields = ["name", "company"];
+    websql.createTable("heroes", fields);
+    // C
+    websql.insert("heroes", fields, ["batman", "dc"]);
+    websql.insert("heroes", ["company", "name"], ["dc", "Hulk"]);
+    websql.insert("heroes", fields, ["Spiderman", "Unknown"]);
+    // R
+    websql.select("heroes");
+    // websql.select("heroes", "name = 'Hulk'");
+    // U
+    websql.update("heroes", "company", "DC USA", "name = 'batman'");
+    // D
+    websql.delete("heroes", "name = 'Hulk'");
+  </script>
+</body>
+</html>
