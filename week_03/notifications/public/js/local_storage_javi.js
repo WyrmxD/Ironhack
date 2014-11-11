@@ -14,7 +14,9 @@ var storage = (function(){
 
     _table = function(name) {
         _read();
-        _tables[name] = [];
+        if(_tables[name] == undefined) {
+            _tables[name] = [];
+        }
         _save();
     };
 
@@ -26,14 +28,17 @@ var storage = (function(){
 
     _select = function(table, where_key, where_value) {
         _read();
+        item_list = []
         table = _tables[table];
         if (table) {
             for (var i=0, len = table.length; i < len; i++) {
                 if (where_key === undefined || table[i][where_key] === where_value) {
-                    console.log(table[i]);
+                    //console.log(table[i]);
+                    item_list[item_list.length] = table[i]
                 }
             }
         }
+        return item_list
     };
 
     _update = function(table, value, where_key, where_value) {
@@ -82,14 +87,14 @@ var storage = (function(){
 })();
 
 
-
+/* MOVIES */
 // storage.createTable("movies");
 // storage.insert("movies", {name: "Batman", director: "Tim Burton"});
 // storage.insert("movies", {name: "Big Fish", director: "Tim Burton"});
 // storage.select("movies", "director", "Tim Burton");
 // storage.select("movies", "name", "Batman");
-
+// /* SPORTS */
 // storage.createTable("sports");
 // storage.insert("sports", {name: "Swimming", level: 0});
 // storage.insert("sports", {name: "Cycling", level: 1});
-// storage.insert("sports", {name: "Running", level: 2});*/
+// storage.insert("sports", {name: "Running", level: 2});
