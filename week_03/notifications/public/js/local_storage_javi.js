@@ -22,6 +22,7 @@ var storage = (function(){
 
     _insert = function(table, value) {
         _read();
+        console.log(value)
         _tables[table].push(value);
         _save();
     };
@@ -33,7 +34,6 @@ var storage = (function(){
         if (table) {
             for (var i=0, len = table.length; i < len; i++) {
                 if (where_key === undefined || table[i][where_key] === where_value) {
-                    //console.log(table[i]);
                     item_list[item_list.length] = table[i]
                 }
             }
