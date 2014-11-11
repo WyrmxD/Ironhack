@@ -1,0 +1,7 @@
+Hack - Día 2
+
+Cachear un servicio web.
+Queremos que la primera vez que el usuario consulte el servicio, preguntar si esa url está cacheada.
+No, entonces hacemos la petición HTTP y la url se cachea junto con la información.
+Si la tenemos cacheada preguntamos la hora de último acceso y en caso de no superar el tiempo máximo.
+

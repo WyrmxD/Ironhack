@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Geo Hack</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="http://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false">
+    <script src="js/local_storage.js"></script>
+    <script>
+
+    	locations = [
+    		{"name": "El Retiro", "latitude" : 40.4134182, "longitude" : -3.6854218 },
+    		{"name": "Casa de Campo", "latitude" : 40.4186134, "longitude" :-3.7307404}
+    	]
+
+
+		function addMarks(map, myPos){
+
+			var marker = new google.maps.Marker({
+				position: myPos,
+				icon: {
+					path: google.maps.SymbolPath.CIRCLE,
+					scale: 10
+				},
+				draggable: false,
+				map: map
+			});
+			marker.setMap(map);
+
+			for (var i = 0,length = locations.length; i < length; i++) {
+				var myLatlng = new google.maps.LatLng(locations[i].latitude, locations[i].longitude);
+				var marker = new google.maps.Marker({
+					position: myLatlng,
+					title	: locations[i].name + " " + (google.maps.geometry.spherical.computeDistanceBetween(myPos, myLatlng) / 1000) + "Km"
+				});
+
+				marker.setMap(map);
+			}
+		}
+
+		function initialize() {
+
+			var initPos = new google.maps.LatLng(locations[0].latitude, locations[0].longitude);
+			var mapOptions = {
+				zoom	: 13,
+				center	: initPos
+			}
+			var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+	    	if (navigator.geolocation) { 
+				navigator.geolocation.getCurrentPosition(onSuccess, onError); 
+				function onSuccess(position){
+					var myPos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+					addMarks(map, myPos)
+				}
+				function onError(error){
+					alert("Error en GPS: " + error);
+				}
+			}
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
