@@ -1,0 +1,26 @@
+{
+  "name": "tuktuk",
+  "version": "1.0.0",
+  "description": "Simple (but powerful) RWD Framework",
+  "main": "tuktuk.css",
+  "homepage": "https://github.com/soyjavi/tuktuk",
+  "license": "MIT",
+  "authors": [
+    "Javi Jimenez",
+    "Javi Jimenez <javi@tapquo.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/soyjavi/package-tuktuk.git"
+  },
+  "_release": "1.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.0",
+    "commit": "9f10da55ca3e6d06d946a451cf15e93b4b9a4759"
+  },
+  "_source": "git://github.com/soyjavi/package-tuktuk.git",
+  "_target": "~1.0.0",
+  "_originalSource": "tuktuk",
+  "_direct": true
+}

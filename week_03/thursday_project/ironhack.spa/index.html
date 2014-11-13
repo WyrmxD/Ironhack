@@ -1,0 +1,53 @@
+<html>
+<head>
+  <title>Ironhack.SPA</title>
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,400' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="bower_components/tuktuk/tuktuk.grid.css">
+  <link rel="stylesheet" href="assets/css/ironhack.spa.css">
+</head>
+<body>
+  <header>
+    <h1>IronHack <span class="hide-on-phone">Single Page Application</span></h1>
+    <nav class="session">
+      <img src="http://cdn.tapquo.com/photos/soyjavi.jpg" />
+      <strong class="hide-on-phone">Javi Jimenez</strong>
+    </nav>
+  </header>
+
+  <article class="session">
+    <div class="row">
+      <section class="column_8">
+        <h2 class="hide-on-phone">Map</h2>
+        <div class="map"></div>
+        <h2 class="hide-on-phone">Form</h2>
+        <form class="hide-on-phone">
+          <input type="text" name="name" placeholder="Name" />
+          <input type="text" name="address" placeholder="Address" class="big" />
+          <input type="text" name="latitude" placeholder="Latitude" class="small" />
+          <input type="text" name="longitude" placeholder="Longitude" class="small" />
+          <button>Add Cinema</button>
+        </form>
+      </section>
+
+      <aside class="column_4">
+        <h2>Cinemas</h2>
+        <ul class="items">
+          <!-- REMOVE THIS TEMPLATE --------------------------------------- !-->
+          <li>
+            <span>123m</span>
+            <strong>Name of...</strong>
+            <small>Address</small>
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </article>
+
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="assets/js/thirds/storage.js"></script>
+  <script type="text/javascript" src="assets/js/ironhack.spa.js"></script>
+  <script type="text/javascript" src="assets/js/ironhack.spa.constants.js"></script>
+  <script type="text/javascript" src="assets/js/ironhack.spa.list.js"></script>
+</body>
+</html>
