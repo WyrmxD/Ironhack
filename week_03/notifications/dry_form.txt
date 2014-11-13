@@ -1,0 +1,15 @@
+<script>
+    $("button").on("click", function(event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      // Dont Repeat Yourself
+      var fields = ["name", "latitude", "longitude", "mail", "tel"];
+      obj_cinemas = {}
+      for (var i = 0, len = fields.length; i < len; i++) {
+        obj_cinemas[fields[i]] = $("input[name=" + fields[i] + "]").val();
+      }
+
+      storage.insert("cinemas", obj_cinemas);
+    });
+  </script>

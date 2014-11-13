@@ -1,0 +1,20 @@
+
+"use strict";
+
+/* IRONHACK.JS */
+window.ironhack = window.i = {};
+
+
+
+/* IRONHACK.CONSTANTS.JS */
+ironhack.C = {
+  QUERY: {
+   SESSION: ".session"
+  }
+};
+
+
+
+/* USE CONSTANTS */
+
+$(ironhack.C.QUERY.SESSION).hide()
