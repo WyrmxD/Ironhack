@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/toktok.css">
+	<script src="http://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false"></script>
+	<script src="js/local_storage_javi.js"></script>
+	<script src="js/notifications.js"></script>
+	<script src="js/session.js"></script>
+	<script src="js/viewcontrol.js"></script>
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<title>My Map</title>
+</head>
+<body>
+	<header>
+		<div class="row" style="margin: 0px; overflow: hidden;">
+			<h1 style="float: left;">IronhackSPA</h1>
+			<div class="user_info"></div>
+		</div>		
+	</header>
+	<div class="row"></div>
+	
+	<section class="row app">
+		<div class="col-6" style="height: 400px;">
+			<div class="col-6" >
+				<h2>Mapa</h2>
+				<div id="map-canvas" style="height: 400px;"></div>
+			</div>
+			<div class="col-6">
+				<h2>Formulario</h2>
+				<form>
+					<label>Nombre:</label>
+					<input class="inp_medium" type="text" id="cin_name">
+					<label>Latitud:</label>
+					<input class="inp_medium" type="text" id="cin_lat">
+					<label>Longitud:</label>
+					<input class="inp_medium" type="text" id="cin_long">
+					<button id="btn_send" class="button-orange">Enviar</button>
+				</form>
+			</div>
+		</div>
+		<div class="col-6">
+			<h2>Cines</h2>
+			<div id="cinemas_list">
+				
+			</div>
+		</div>
+	</section>
+
+	<section class="row session">
+		<div class="col-6">
+			<h2>Login</h2>
+			<form>
+				<label>Username:</label>
+				<input type="text" name="login_user" id="login_user" required><br>
+				<label>Password:</label>
+				<input type="password" name="login_pass" id="login_pass" required><br>
+				<button id="btn_login" class="button-orange">Login</button>
+				<a href="#" id="register_link">Register</a>
+			</form>
+		</div>
+	</section>
+
+	<section class="row register">
+		<div class="col-6">
+			<h2>Register</h2>
+			<form>
+				<label>Username:</label>
+				<input type="text" name="reg_user" id="reg_user" required><br>
+				<label>Password:</label>
+				<input type="password" name="reg_pass" id="reg_pass" required><br>
+				<button id="btn_register" class="button-orange">Register</button>
+				<a href="#" id="login_link">Login</a>
+			</form>
+		</div>
+	</section>
+
+	<script type="text/javascript">
+
+		session.check_logged()
+
+		$("#btn_login").click(function(event){
+			event.preventDefault();
+			event.stopPropagation();
+			var username = $("#login_user").val()
+			var password = $("#login_pass").val()
+			session.login(username, password)
+		});
+
+		$("#btn_register").click(function(event){
+			event.preventDefault();
+			event.stopPropagation();
+			var username = $("#reg_user").val()
+			var password = $("#reg_pass").val()
+			session.register(username, password)
+		});
+
+		$("#btn_send").click(function(event){
+			event.preventDefault();
+			event.stopPropagation();
+			var name = $("#cin_name").val()
+			var latitude = $("#cin_lat").val()
+			var longitude = $("#cin_long").val()
+
+			storage.local()
+			storage.createTable("cinemas")
+			storage.insert("cinemas", {name: name, latitude: latitude, longitude: longitude});
+
+			viewcontrol.render_cinemas()
+		});
+
+		$("#register_link").click(function(event){
+			event.preventDefault();
+			event.stopPropagation();
+			viewcontrol.show_register()
+		});
+
+		$("#login_link").click(function(event){
+			event.preventDefault();
+			event.stopPropagation();
+			viewcontrol.show_login()
+		});
+
+		$(".cinema_item").click(function() {
+			cinema_id = $(this).attr("id")
+			viewcontrol.draw(cinema_id)
+			//$(this).toggleClass
+		});
+
+		function initialize() {
+
+			var initPos = new google.maps.LatLng(40.4014563, -3.6922149);
+			var mapOptions = {
+				zoom	: 13,
+				center	: initPos
+			}
+			map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+	</script>
+</body>
+</html>
