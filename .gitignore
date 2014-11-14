@@ -3,3 +3,4 @@ book_shelf/
 *node_modules/
 *build/
 *bower_components/
+*dist/
