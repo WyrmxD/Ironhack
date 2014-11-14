@@ -1,0 +1,96 @@
+@import "mixins.less";
+@import "variables.less";
+
+@charset "US-ASCII";
+
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../../fonts/museosans-100.ttf") format("truetype");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../../fonts/museosans-300.ttf") format("truetype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../../fonts/museosans-700.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'MuseoSans';
+  src: url("../../fonts/museosans-900.ttf") format("truetype");
+  font-weight: 900;
+}
+
+
+.kinout {
+    font-family: "MuseoSans";
+    background: #008FD5;
+    color: @white;
+    .text-shadow(0px 1px 1px rgba(0,0,0,0.5));
+    font-weight: 400;
+
+    & mark {
+        color: #393939;
+        .text-shadow(0 1px 0 rgba(255,255,255,0.5));
+
+    }
+
+    & progress span {
+        background: #00A6FC;
+    }
+
+    & h1 {
+        .text-shadow(0px 10px 10px rgba(0,0,0,0.5));
+        &.big {
+            font-size: 180px;
+        }
+    }
+
+    & h6 { font-size: 24px; }
+
+    & .box.white { color: @white; }
+
+    & a {
+        color: rgba(255,255,255,0.4);
+        &:hover, &:active { color: @white; }
+    }
+
+    & .box { .box-shadow(0px 4px 8px rgba(0,0,0,0.5)); }
+    & .bordered { border: solid 8px @white; }
+
+    pre {
+        width: 760px;
+        margin: 1% 0% 1% -380px !important;
+        font-size: 22px;
+    }
+
+    .padding {
+        padding: 16px;
+    }
+
+    & .stats {
+        & .column {
+            height: 200px;
+            font-size: 30px;
+            color: rgba(255,255,255,0.75);
+        }
+
+        &  .number {
+            font-size: 114px;
+            line-height: 80px;
+            font-weight: bold;
+            display: block;
+            color: #fff;
+            margin-top: 64px;
+        }
+        & .icon {
+            // font-size: 5.0em;
+        }
+    }
+}

@@ -1,0 +1,146 @@
+@font-face
+  font-family: 'bauhaus'
+  src: url("../fonts/itc_bauhaus_light.ttf") format("truetype")
+  font-weight: 100
+
+@font-face
+  font-family: 'bauhaus'
+  src: url("../fonts/itc_bauhaus_normal.ttf") format("truetype")
+  font-weight: 500
+
+@font-face
+  font-family: 'bauhaus'
+  src: url("../fonts/itc_bauhaus_bold.ttf") format("truetype")
+  font-weight: 700
+
+@font-face
+  font-family: 'bauhaus'
+  src: url("../fonts/itc_bauhaus_extrabold.ttf") format("truetype")
+  font-weight: 900
+
+
+.font
+  &.fine
+    font-weight: 100 !important
+  &.normal
+    font-weight: 500 !important
+  &.bold
+    font-weight: 700 !important
+  &.extrabold
+    font-weight: 900 !important
+
+background =        #0894E1
+
+color =             #fff
+color_link =        #fff
+color_mark =        rgba(255,255,255,0.5)
+background_mark =   none
+
+// Dimensions
+kinout_height =     600px
+kinout_width =      1000px
+
+.kinout
+    color: color
+    background-color: background
+    font-family: "bauhaus", Helvetica, Arial, sans-serif
+    text-shadow: 0 1px 1px rgba(0,0,0,0.25)
+
+    &.default-color
+        background-color: background !important
+
+
+[data-slide=title]
+    & img
+        height: 184px
+    & h1 img
+        position: relative
+        height: 114px
+        bottom: -26px
+
+h1, h2, h3, h4, h5, h6
+    letter-spacing: -0.05em
+
+a
+    &, &:hover, &:active
+        color: color_link
+
+mark
+    background: background_mark
+    color: color_mark
+    text-shadow: none
+
+.text
+    font-weight: bold
+    text-shadow: 0 1px 1px color
+
+    &.color
+        text-shadow: none
+
+        &.red
+            color: red
+        &.green
+            color: green
+        &.blue
+            color: blue
+        &.yellow
+            color: yellow
+
+[data-image]
+    & .text.color
+        &:not(.white)
+            text-shadow: 0 1px 0 rgba(255,255,255,0.5)
+        &.white
+            text-shadow: 0 1px 1px color
+
+
+header pre, pre.big
+    margin: 1% 0% 1% -400px !important
+    width: 800px
+    text-align: center !important
+
+    & code
+        font-size: 1.8em
+        line-height: 1.0em
+        text-shadow: none
+
+pre
+  margin: 0% -450px !important
+  width: 900px
+  & code
+    font-size: 1.3em
+
+blockquote
+  background: rgba(0, 0, 0, 0.4)
+  color: white
+  text-shadow: none
+
+.copyright
+  &, & a
+    opacity: 0.5
+    color: white
+    text-shadow: none
+
+
+.stats
+  & .column
+    background: rgba(255,255,255,0.25)
+    height: 200px
+    font-size: 30px
+    font-weight: bold
+
+  &  .number
+    font-size: 114px
+    line-height: 70px
+    font-weight: bold
+    display: block
+    color: #fff
+    margin-top: 64px
+    margin-bottom: 16px
+
+  & .icon
+      // font-size: 5.0em
+
+.progress
+  & > span
+    background: color_mark

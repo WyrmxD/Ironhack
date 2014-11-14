@@ -1,0 +1,140 @@
+@font-face {
+  font-family: 'bauhaus';
+  src: url("../fonts/itc_bauhaus_light.ttf") format("truetype");
+  font-weight: 100;
+}
+@font-face {
+  font-family: 'bauhaus';
+  src: url("../fonts/itc_bauhaus_normal.ttf") format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'bauhaus';
+  src: url("../fonts/itc_bauhaus_bold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'bauhaus';
+  src: url("../fonts/itc_bauhaus_extrabold.ttf") format("truetype");
+  font-weight: 900;
+}
+.font.fine {
+  font-weight: 100 !important;
+}
+.font.normal {
+  font-weight: 500 !important;
+}
+.font.bold {
+  font-weight: 700 !important;
+}
+.font.extrabold {
+  font-weight: 900 !important;
+}
+.kinout {
+  color: #fff;
+  background-color: #0894e1;
+  font-family: "bauhaus", Helvetica, Arial, sans-serif;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.25);
+}
+.kinout.default-color {
+  background-color: #0894e1 !important;
+}
+[data-slide=title] img {
+  height: 184px;
+}
+[data-slide=title] h1 img {
+  position: relative;
+  height: 114px;
+  bottom: -26px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: -0.05em;
+}
+a,
+a:hover,
+a:active {
+  color: #fff;
+}
+mark {
+  background: none;
+  color: rgba(255,255,255,0.5);
+  text-shadow: none;
+}
+.text {
+  font-weight: bold;
+  text-shadow: 0 1px 1px #fff;
+}
+.text.color {
+  text-shadow: none;
+}
+.text.color.red {
+  color: #f00;
+}
+.text.color.green {
+  color: #008000;
+}
+.text.color.blue {
+  color: #00f;
+}
+.text.color.yellow {
+  color: #ff0;
+}
+[data-image] .text.color:not(.white) {
+  text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+[data-image] .text.color.white {
+  text-shadow: 0 1px 1px #fff;
+}
+header pre,
+pre.big {
+  margin: 1% 0% 1% -400px !important;
+  width: 800px;
+  text-align: center !important;
+}
+header pre code,
+pre.big code {
+  font-size: 1.8em;
+  line-height: 1em;
+  text-shadow: none;
+}
+pre {
+  margin: 0% -450px !important;
+  width: 900px;
+}
+pre code {
+  font-size: 1.3em;
+}
+blockquote {
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  text-shadow: none;
+}
+.copyright,
+.copyright a {
+  opacity: 0.5;
+  color: #fff;
+  text-shadow: none;
+}
+.stats .column {
+  background: rgba(255,255,255,0.25);
+  height: 200px;
+  font-size: 30px;
+  font-weight: bold;
+}
+.stats .number {
+  font-size: 114px;
+  line-height: 70px;
+  font-weight: bold;
+  display: block;
+  color: #fff;
+  margin-top: 64px;
+  margin-bottom: 16px;
+}
+.progress > span {
+  background: rgba(255,255,255,0.5);
+}

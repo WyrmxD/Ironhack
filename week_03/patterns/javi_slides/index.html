@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Tapquo - Designing Mobile User Experiences</title>
+    <link rel="stylesheet" href="components/slidus/slidus-static.css">
+    <link rel="stylesheet" href="components/slidus.theme/css/widget.theme.css">
+    <link rel="stylesheet" href="components/lungo.icon/lungo.icon.css">
+    <link rel="stylesheet" href="components/lungo.icon/lungo.icon.brand.css">
+    <link href="assets/javascripts/rainbow/themes/blackboard.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="kinout">
+
+    <!-- ============================== TAPQUO ============================== -->
+    <section>
+        <article data-slide="title">
+            <img src="assets/images/logo.png"/>
+            <h4 class="font fine">Designing Mobile User Experiences</h4>
+        </article>
+    </section>
+
+    <!-- ============================== CHAPTER & SPEAKER ============================== -->
+    <section>
+        <article data-slide="title">
+            <h1>2</h1>
+            <h3 data-step="left"><mark>Patterns JavaScript</mark></h3>
+        </article>
+
+        <article>
+            <header>
+                <h2>Tu Profe</h2>
+                <pre  class="big"><code data-language="coffeescript">if speaker is "soyjavi" then current.mode is "freak"</code></pre>
+            </header>
+            <br/>
+            <div>
+                <span class="column big">
+                    <br/>
+                    <img src="http://tapquo.com/images/team-javi.jpg" class="bordered size_256 box">
+                    <h4><a href="http://twitter.com/haas85"><span class="icon brand twitter"></span> soyjavi</a></h4>
+                </span>
+
+                <span class="column big right">
+                    <ul>
+                        <li class="text size em11">CTO &amp; Founder at <mark>@tapquo</mark></li>
+                        <li class="text size em09"><mark  class="">Lungo</mark>, <mark >QuoJS</mark> &amp; <mark >Monocle</mark> author</li>
+                        <li class="text size em18"><mark>#Web</mark> believer &amp; <mark>#W3C</mark> member</li>
+                        <li class="text"><mark >JavaScript</mark> &amp; CleanCode lover</li>
+                        <li class="text size em16"><mark>#HTML5</mark> evangelist </li>
+                        <li class="text">...sometimes <mark>#Nerd Speaker</mark></li>
+
+                        <li class="text size em09">...writing a <mark>#CoffeeScript</mark> book</li>
+                    </ul>
+                </span>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================== INDEX ============================== -->
+    <section>
+        <article>
+            <header>
+                <h1><mark>¿Qué vamos a ver hoy?</h1>
+                <h3>...además de mucho &lt;code&gt;</h3>
+            </header>
+            <div>
+                <br/>
+                <ol>
+                    <li data-step="right">What is a Pattern?</li>
+                    <li data-step="left">Creational Pattern</li>
+                    <li data-step="right">Constructor Pattern</li>
+                    <li data-step="left">Singleton Pattern</li>
+                    <li data-step="right">Module Pattern</li>
+                    <li data-step="left">Revealing Module Pattern</li>
+                    <li data-step="right">Prototype Pattern</li>
+                    <li data-step="left">DRY Pattern</li>
+                    <li data-step="right">Facade Pattern</li>
+                    <li data-step="left">Factory Pattern</li>
+                    <li data-step="right">Decorator Pattern</li>
+                    <li data-step="left">Chaining Pattern</li>
+                    <li data-step="right">CoffeeScript?</li>
+                    <li data-step="left">Referencias</li>
+                </ol>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================== 0.CROCKFORD SAYS ============================== -->
+    <section>
+        <article data-slide="blockquote" data-image="assets/images/douglas.jpeg">
+            <div>
+                <blockquote>JavaScript doesn't suck! You're just doing it wrong.</blockquote>
+                <cite class="text color white">Doug Crockford</cite>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================== 1.What is a Pattern ============================== -->
+    <section>
+        <article data-slide="title">
+            <h1>1</h1>
+            <h1><mark>What is a Pattern</mark></h1>
+        </article>
+
+         <article>
+            <header>
+                <h2>Pattern is</h2>
+                <h3><mark>... a pattern is...</mark></h3>
+            </header>
+            <br/>
+            <div>
+               ...a reusable solution that can be applied to commonly occurring problems in software design - in our particular case, in writing JavaScript applications. Another way of looking at patterns are as templates for how you solve problems - ones which can be used in quite a few different situations.
+To consider how useful a pattern may be, let us consider that if you were to write a script where you said ‘for each item, sound an alert’, if sounding an alert was complex in nature, it would always result in more maintainable code doing the above over saying ‘do this for item 1’, ‘do this for item 2’, ‘do the same again for item 3’, i.e. If the code performing the bulk of the work exists in fewer places it becomes significantly easier to maintain.
+            </div>
+        </article>
+
+         <article data-slide="title">
+            <h1>resumiendo</h1>
+            <h1 data-step="left">tiene que...</h1>
+            <h1 data-step="right"><mark>...ofrecer soluciónes</mark></h1>
+        </article>
+
+        <article data-slide="title">
+            <h1>tiene que...</h1>
+            <h1><mark>...ser facil de reutilizar</mark></h1>
+        </article>
+
+        <article data-slide="title">
+            <h1>tiene que...</h1>
+            <h1><mark>...ser expresivo</mark></h1>
+        </article>
+
+        <article>
+            <header>
+                <h1>Tipos</h1>
+                <h3><mark>...tranquilos, no vamos a estudiar todos</mark></h3>
+            </header>
+            <br/>
+            <div>
+                <div>
+                    <div data-step="left">
+                        <h2>Creational Design Patterns</h2>
+                        <p>
+                            Factory<mark>, Abstract Factory, Builder,</mark> Prototype, Singleton</p>
+                        <br/>
+                    </div>
+
+                    <div data-step="right">
+                        <h2>Structural Design Patterns</h2>
+                        <p>
+                            <mark>Adapter, Bridge, Composite, Decorator, </mark>Facade<mark>, Flyweight, Proxy</mark>
+                        </p>
+                        <br/>
+                    </div>
+
+
+                    <div data-step="left">
+                        <h2>Behavioral Design Patterns</h2>
+                        <p>
+                            Interpreter, Template Method, Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, Strategy, Visitor,
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================== CREATIONAL PATTERN ============================== -->
+    <section>
+        <article data-slide="title" data-color="#FFC801">
+            <h1>The Creational Pattern</h1>
+            <h3><mark>...el más básico</mark></h3>
+
+        </article>
+
+        <article data-color="#FFC801">
+            <header>
+                <h2>The Creational Pattern</h2>
+                <h3><mark>...el más básico</mark></h3>
+            </header>
+
+            <div>
+                <pre><code data-language="javascript">
+
+var MyClass = {};
+
+var newObject = new MyClass();
+var otherObject = new MyClass();
+
+                </code></pre>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================== Constructor PATTERN ============================== -->
+    <section>
+        <article data-slide="title" data-color="red">
+            <h1>The Constructor Pattern</h1>
+            <h3><mark>...el más familiar</mark></h3>
+        </article>
+
+        <article data-color="red">
+            <header>
+                <h2>The Constructor Pattern</h2>
+                <h3><mark>...el más familiar</mark></h3>
+            </header>
+<div>
+    <pre><code data-language="javascript">
+function Car(model, year, miles){
+   this.model = model;
+   this.year    = year;
+   this.miles  = miles;
+   this.whatCar = function(){
+     console.log(this.model);
+  };
+}
+
+var civic = new Car("Honda Civic", 2009, 20000);
+var mondeo = new Car("Ford Mondeo", 2010, 5000);
+    </code></pre>
+</div>
+            <div>
+                <h4>Douglas recomienda capitalizar tu constructor para poder distinguir facilmente de las funciones normales.</h4>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================== SINGLETON PATTERN ============================== -->
+    <section>
+        <article data-slide="title" data-color="green">
+            <h1>The Singleton Pattern</h1>
+            <h3><mark>...crea si no existe</mark></h3>
+        </article>
+
+        <article data-color="green">
+            <header>
+                <h2>The Singleton Pattern</h2>
+                <h3><mark>...crea si no existe</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">var SingletonTester = (function(){
+    function Singleton(args) {
+        var args = args || {};
+        //set the name parameter
+        this.name = 'SingletonTester';
+        this.pointX = args.pointX || 6;
+    }
+
+    var instance;  //this is our instance holder
+    //this is an emulation of static variables and methods
+    var _static = {
+        name: 'SingletonTester',
+        getInstance: function (args) {
+            if (instance === undefined) {
+                instance = new Singleton(args);
+            }
+            return instance;
+        }
+    };
+
+    return _static;
+})();
+
+var singletonTest = SingletonTester.getInstance({pointX: 5});
+console.log(singletonTest.pointX); // outputs 5</code></pre>
+        </article>
+    </section>
+
+
+    <!-- ============================== The Module Pattern ============================== -->
+    <section>
+        <article data-slide="title" data-color="magenta">
+            <h1>The Module Pattern</h1>
+            <h3><mark>...uno de los más utilizados</mark></h3>
+        </article>
+
+        <article data-color="magenta">
+            <header>
+                <h2>The Module Pattern</h2>
+                <h3><mark>...uno de los más utilizados</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">var someModule = (function(){
+    //private attributes
+    var privateVar = 5;
+    //private methods
+    var privateMethod = function(){
+        return 'Private Test';
+    };
+
+    return {
+        //public attributes
+        publicVar    : 10,
+        //public methods
+        publicMethod : function(){
+            return ' Followed By Public Test ';
+        },
+        //let's access the private members
+        getData : function(){
+            return privateMethod() + this.publicMethod() + privateVar;
+        }
+    }
+})(); //anonymous function to execute and return
+
+someModule.getData();</code></pre>
+        </article>
+
+        <article data-slide="title" data-color="magenta">
+            <h1>vamos a ponerlo bonito</h1>
+            <h3><mark>...clean-code my friend</mark></h3>
+        </article>
+
+
+        <article data-color="magenta">
+            <header>
+                <h2>The Module Pattern</h2>
+                <h3><mark>...uno de los más utilizados</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">var someModule = (function(){
+    var private_var = 5;
+    var PUBLIC_CONSTANT = 10;
+
+    function publicMethod() {
+        return ' Followed By Public Test ';
+    }
+
+    function publicMethod2() {
+        return privateMethod() + this.publicMethod() + privateVar;
+    }
+
+    // Private methods in last position
+    function _privateMethod() {
+        return 'Private Test';
+    };
+
+    return {
+        publicVar    : PUBLIC_CONSTANT,
+        publicMethod : publicMethod,
+        getData      : publicMethod2
+    }
+})();
+
+someModule.getData();</code></pre>
+        </article>
+
+        <article data-slide="title" data-color="magenta">
+            <h1><mark>a esto se le llama</mark></h1>
+        </article>
+
+       <article data-slide="title" data-color="magenta">
+            <h1>Revealing Module Pattern</h1>
+            <h3><mark>...uno de los más utilizados</mark></h3>
+        </article>
+    </section>
+
+    <!-- ============================== The Prototype Pattern ============================== -->
+    <section>
+        <article data-slide="title" data-color="grey">
+            <h1>The Prototype Pattern</h1>
+            <h3><mark>...basado en herencia</mark></h3>
+        </article>
+
+        <article data-color="grey">
+            <header>
+                <h2>The Prototype Pattern</h2>
+                <h3><mark>...basado en herencia</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">// No need for capitalization as it's not a constructor
+var someCar = {
+  drive: function() {};
+  name: 'Mazda 3'
+};
+// Use Object.create to generate a new car
+var anotherCar = Object.create(someCar);
+anotherCar.name = 'Toyota Camry';</code></pre>
+
+        <br/>
+        <div data-step="left">y si no tenemos Object.create?</div>
+        <pre data-step="right"><code data-language="coffeescript">
+unless typeof Object.create is 'function'
+  Object.create = (o) ->
+    Func = ->
+    Func.prototype = o
+    new Func()
+        </code></pre>
+        <div data-step="left">no es JavaScript!! lo estamos haciendo con CoffeeScript</div>
+        </article>
+    </section>
+
+    <!-- ============================== The Prototype Pattern ============================== -->
+    <section>
+        <article data-slide="title" data-color="black">
+            <h1>The DRY Pattern</h1>
+            <h3><mark>...más que un patrón -> ley de vida</mark></h3>
+        </article>
+
+        <article data-color="black">
+            <header>
+                <h2>The DRY Pattern</h2>
+                <h3><mark>...non-DRY</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">// Let's store some default values in an array
+var defaultSettings = {};
+defaultSettings['carModel'] = 'Mercedes';
+defaultSettings['carYear'] = 2010;
+defaultSettings['carMiles'] = 5000;
+defaultSettings['carTint'] = 'Metallic Blue';
+
+//Let's do something with this data if a checkbox is clicked
+$('.someCheckbox').click(function(){
+   if (this.checked) {
+        $('#input_carModel').val(activeSettings.carModel);
+        $('#input_carYear').val(activeSettings.carYear);
+        $('#input_carMiles').val(activeSettings.carMiles);
+        $('#carTint').val(activeSettings.carTint);
+    } else {
+        $('#input_carModel').val('');
+        $('#input_carYear').val('');
+        $('#input_carMiles').val('');
+        $('#input_carTint).val('');
+    }
+});
+</code></pre>
+        </article>
+
+        <article data-color="black">
+            <header>
+                <h2>The DRY Pattern</h2>
+                <h3><mark>...DRYing</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">$('.someCheckbox').click(function(){
+    var checked = this.checked;
+
+    $.each(['carModel', 'carYear', 'carMiles', 'carTint'], function(index, key) {
+        $('#input_' + key).val(checked ? defaultSettings[key] : '');
+    });
+});
+</code></pre>
+        </article>
+    </section>
+
+
+    <!-- ============================== The Facade Pattern ============================== -->
+    <section>
+        <article data-slide="title" data-color="#FFC801">
+            <h1>The Facade Pattern</h1>
+            <h3><mark>...abstraete de todo</mark></h3>
+        </article>
+
+        <article data-color="#FFC801">
+            <header>
+                <h2>The Facade Pattern</h2>
+                <h3><mark>...abstraete de todo</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">var addMyEvent = function(element, event, callback) {
+
+    if(element.addEventListener) {
+        element.addEventListener(event, callback, false);
+    } else if (element.attachEvent) {
+        element.attachEvent('on'+event, callback);
+    } else {
+        element['on' + event] = callback;
+    }
+
+};
+</code></pre>
+        </article>
+    </section>
+
+    <!-- ============================== The Factory Pattern ============================== -->
+    <section>
+        <article data-slide="title" data-color="orange">
+            <h1>The Factory Pattern</h1>
+            <h3><mark>...llama a la fábrica</mark></h3>
+        </article>
+
+        <article data-color="orange">
+            <header>
+                <h2>The Factory Pattern</h2>
+                <h3><mark>...llama a la fábrica</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">var Car = (function() {
+   var Car = function (model, year, miles) {
+       this.model = model;
+       this.year   = year;
+       this.miles = miles;
+   };
+
+   return function (model, year, miles) {
+       return new Car(model, year, miles);
+   }
+})();
+
+var civic = new Car("Honda Civic", 2009, 20000);
+
+var mondeo = new Car("Ford Mondeo", 2010, 5000);
+</code></pre>
+        <h3 data-step="left">¿quieres más?</h3>
+        <h2 data-step="right"><mark>¿tienes hambre?</mark></h2>
+        <h1 data-step="down">vamos a comer pizza...</h1>
+
+        </article>
+    </section>
+
+    <!-- ============================== The Decorator Pattern ============================== -->
+    <section>
+        <article data-slide="title" data-color="purple">
+            <h1>The Decorator Pattern</h1>
+            <h3><mark>...alternativa a las subclases</mark></h3>
+        </article>
+
+        <article data-color="purple">
+            <header>
+                <h2>The Decorator Pattern</h2>
+                <h3><mark>...alternativa a las subclases</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">function Macbook() {
+    this.cost = function(){
+        return 1000;
+    };
+}
+function Memory(macbook){
+    this.cost = function(){
+        return macbook.cost() + 75;
+    };
+}
+function BlurayDrive(macbook){
+    this.cost = function(){
+        return macbook.cost() + 300;
+    };
+}
+function Insurance(macbook){
+   this.cost = function(){
+        return macbook.cost() + 250;
+    };
+}
+
+// Sample usage
+var myMacbook = new Insurance(new BlurayDrive(new Memory(new Macbook())));
+console.log( myMacbook.cost() );</code></pre>
+
+        </article>
+    </section>
+
+    <!-- ============================== The Chaining Pattern ============================== -->
+    <section>
+        <article data-slide="title" data-color="darkgrey">
+            <h1>The Chaining Pattern</h1>
+            <h3><mark>...uniendo funcionalidades</mark></h3>
+        </article>
+
+        <article data-color="darkgrey">
+            <header>
+                <h2>The Chaining Pattern</h2>
+                <h3><mark>...uniendo funcionalidades</mark></h3>
+            </header>
+            <pre><code data-language="javascript">var Chainable = function () {
+    this.nNumber = 0;
+};
+
+Chainable.prototype.add = function (nNumber) {
+    this.nNumber += nNumber;
+    return this;
+};
+
+Chainable.prototype.multiply = function (nNumber) {
+    this.nNumber *= nNumber;
+    return this;
+};
+
+Chainable.prototype.toString = function()
+{
+    return this.nNumber.toString();
+};
+
+var a = Chainable().add(5).multiply(2);
+console.error(a.toString());
+</code></pre>
+            <br/>
+        </article>
+
+        <article data-slide="title" data-color="darkgrey">
+
+            <h1 >¿Una libreria muy famosa que utilice este pattern?</h1>
+
+            <h1 data-step="boom"><mark>jQuery</mark></h1>
+            <h1 data-step="boom"><mark>...y QuoJS :)</mark></h1>
+        </article>
+    </section>
+
+    <!-- ============================== COFFESCRIPT? ============================== -->
+    <section>
+        <article data-slide="title">
+            <h1>...lo hacemos en CoffeeScript?</h1>
+            <h5><mark>http://coffeescript.org/</mark></h5>
+        </article>
+    </section>
+
+    <!-- ============================== REFERENCIAS ============================== -->
+    <section>
+        <article data-slide="title">
+            <h1>Referencias</h1>
+            <h5><mark>de obligada lectura</mark></h5>
+        </article>
+
+
+        <article>
+            <header>
+                <h2>Referencias</h2>
+                <h3><mark>de obligada lectura</mark></h3>
+            </header>
+            <br/>
+            <div>
+                <span class="column big">
+                    <img src="http://ecx.images-amazon.com/images/I/51ACzMjH6rL._SL500_.jpg" class="size_400 bordered"/>
+                    <br/>
+                    <a href="http://www.amazon.es/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752" target="_blank">Buy now!</a>
+                </span>
+
+                <span class="column big right">
+                    <img src="http://yuiblog.com/assets/ross-dustin-book.gif" class="size_400 bordered"/>
+                    <br/>
+                    <a href="http://www.amazon.es/JavaScript-Design-Patterns-Recipes-ebook/dp/B001AT1YUA/ref=sr_1_3?s=digital-text&ie=UTF8&qid=1354275884&sr=1-3" target="_blank">Buy now!</a>
+                </span>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================== FINISH ============================== -->
+    <section>
+        <article data-slide="title">
+            <h1>thanks!</h1>
+            <h5><mark>@tapquo || hello@tapquo.com</mark></h5>
+        </article>
+    </section>
+
+    <script src="components/quojs/quo.js"></script>
+    <script src="components/slidus/slidus-static.js"></script>
+    <script src="assets/javascripts/rainbow/rainbow.min.js"></script>
+    <script src="assets/javascripts/rainbow/language/generic.js"></script>
+    <script src="assets/javascripts/rainbow/language/coffeescript.js"></script>
+    <script>
+        $$(document).ready(function() {
+            KINOUT.init();
+        });
+    </script>
+
+</body>
+</html>
