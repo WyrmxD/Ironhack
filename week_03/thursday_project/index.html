@@ -7,6 +7,7 @@
 	<script src="js/notifications.js"></script>
 	<script src="js/session.js"></script>
 	<script src="js/viewcontrol.js"></script>
+	<script src="js/orderby.js"></script>
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<title>My Map</title>
 </head>
@@ -39,7 +40,7 @@
 			</div>
 		</div>
 		<div class="col-6">
-			<h2>Cines</h2>
+			<h2>Cines</h2> <a href="#" id="order_link">order</a>
 			<div id="cinemas_list">
 				
 			</div>
@@ -118,6 +119,12 @@
 			event.preventDefault();
 			event.stopPropagation();
 			viewcontrol.show_login()
+		});
+
+		$("#order_link").click(function(event){
+			event.preventDefault();
+			event.stopPropagation();
+			viewcontrol.render_cinemas('name')
 		});
 
 		$(".cinema_item").click(function() {

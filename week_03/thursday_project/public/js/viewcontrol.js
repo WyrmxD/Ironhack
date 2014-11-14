@@ -31,9 +31,12 @@ var viewcontrol = (function(){
 		alert(message)
 	}
 
-	_render_cinemas = function() {
+	_render_cinemas = function(order_by) {
 		storage.local()
 		cinemasStored = storage.select("cinemas")
+		if(order_by !== undefined){
+			cinemasStored = orderby(cinemasStored, order_by, 'ASC')
+		}
 		$("#cinemas_list").empty()
 		html = "<ul>"
 		for(i=0, len = cinemasStored.length; i < len ; i++){
