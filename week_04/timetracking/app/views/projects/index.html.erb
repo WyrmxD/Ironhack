@@ -1,0 +1,13 @@
+<h1>Projects#index</h1>
+<p>Find me in app/views/projects/index.html.erb</p>
+
+<ul>
+<% @projects.each do | project | %>
+	
+	<li><%=project.name%>
+	<% if !project.description.blank? %>
+		 - <%=project.description%>
+	<% end %>
+	</li>
+<% end %>
+</ul>
