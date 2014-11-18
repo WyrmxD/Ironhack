@@ -1,5 +1,7 @@
 class Project < ActiveRecord::Base
 
+	has_many :entries
+
 	def self.iron_find(id)
 		where("id = ?", id).first!
 	end
@@ -29,6 +31,21 @@ class Project < ActiveRecord::Base
 
 	def self.last_created_projects(n)
 		limit(n).order(created_at: :desc)
+	end
+
+	def total_hours_in_month(month, year)
+		start_date = Date.new(year, month)
+		end_date = Date.new(year, month).end_of_month
+		entries = self.entries_of_month(month, year)
+		entries.reduce(0) do | sum , entry | 
+			sum += (entry.hours + entry.minutes / 60)
+		end
+	end
+
+	def entries_of_month(month, year)
+		start_date = Date.new(year, month)
+		end_date = Date.new(year, month).end_of_month
+		self.entries.where("project_id = ? AND date >= ? AND date <= ?", self.id, start_date, end_date)
 	end
 
 end

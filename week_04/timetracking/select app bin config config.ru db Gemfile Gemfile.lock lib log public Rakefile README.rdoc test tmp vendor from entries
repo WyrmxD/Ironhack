@@ -1,0 +1,14 @@
+                                     Table "public.entries"
+   Column   |            Type             |                      Modifiers                       
+------------+-----------------------------+------------------------------------------------------
+ id         | integer                     | not null default nextval('entries_id_seq'::regclass)
+ project_id | integer                     | 
+ hours      | integer                     | 
+ minutes    | integer                     | 
+ comment    | text                        | 
+ date       | timestamp without time zone | 
+ created_at | timestamp without time zone | 
+ updated_at | timestamp without time zone | 
+Indexes:
+    "entries_pkey" PRIMARY KEY, btree (id)
+

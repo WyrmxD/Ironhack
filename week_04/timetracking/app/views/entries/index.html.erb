@@ -1,0 +1,20 @@
+<div class="container">
+
+	<h1>Entries#index</h1>
+
+	<h2><%= @project.name %></h2>
+	<p><%= @project.description %></p>
+
+	<h3>Entries:</h3>
+	<dl>
+		<% @entries.each do | entry | %>
+		<dt><%= entry.hours %>h <%= entry.minutes %>m</dt>
+		<dd><%= entry.comment %></dd>
+		<dd>Fecha: <%= entry.date %></dd>
+		<% end %>
+	</dl>
+
+	<p>Total hours: <%=@total_hours%></p>
+	
+
+</div><!-- /.container -->
