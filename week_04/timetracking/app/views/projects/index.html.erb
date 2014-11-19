@@ -4,7 +4,7 @@
 <ul>
 <% @projects.each do | project | %>
 	
-	<li><%=project.name%>
+	<li> <%= link_to(project.name, project_entries_path(project)) %>
 	<% if !project.description.blank? %>
 		 - <%=project.description%>
 	<% end %>
