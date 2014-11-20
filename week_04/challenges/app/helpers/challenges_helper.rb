@@ -12,7 +12,7 @@ module ChallengesHelper
 
 	def challenges_found
 		if !@challenges_found.blank?
-			content_tag :ul do
+			tags = content_tag :ul do
 				@challenges_found.collect do | challenge |
 					content_tag :li do
 						link_to(challenge.title, challenge_path(challenge)) \
@@ -22,6 +22,7 @@ module ChallengesHelper
 				end.join.html_safe
 			end
 		end
+		content_tag(:h2 ,'Challenges found') + tags
 	end
 	
 end

@@ -2,8 +2,6 @@
 	<div class="col-xs-12 col-sm-6 col-md-8">
 		<h1>Challenges list</h1>
 
-		<%=challenges_found%>
-
 		<ul>
 		<% @challenges.each do | challenge | %>
 			<li><%= link_to(challenge.title, challenge_path(challenge)) %> - <%= link_to('Edit', edit_challenge_path(challenge)) %> <%= link_to('Delete', challenge_path(challenge), method: :delete, data: {confirm: 'Are you sure?'} ) %> </li>
@@ -11,6 +9,7 @@
 		</ul>
 		<%= link_to('New challenge', new_challenge_path, class: "btn btn-default") %>
 	</div>
+
 	<div class="col-xs-12 col-sm-6 col-md-4">
 		<%= form_tag(search_string_path, method: :get) do %>
 			<div class="form-group">
@@ -18,5 +17,11 @@
 			</div>
 			<%= submit_tag("Search", class: "btn btn-default") %>
 		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-8">
+		<%=challenges_found%>
 	</div>
 </div>
