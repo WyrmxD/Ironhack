@@ -21,8 +21,8 @@ module ChallengesHelper
 					end
 				end.join.html_safe
 			end
+			content_tag(:h2 ,'Challenges found') + tags
 		end
-		content_tag(:h2 ,'Challenges found') + tags
 	end
 	
 end
