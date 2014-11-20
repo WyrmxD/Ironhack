@@ -1,0 +1,12 @@
+
+chanante_ipsum = "Chanante ipsum dolor sit amet, pataliebre con las rodillas in the guanter bizcoché fresquete dolore ut ahí va qué chorrazo pepinoninoni exercitation. Ullamco tunante bonico del tó incididunt te viste de torero freshquisimo et gambitero eiusmod super ñoño tempor ojete moreno. Ojete calor adipisicing ut enratonao bocachoti a tope con la maquinaria minim tontaco páharo pero qué pelazo nianoniano, no te digo ná y te lo digo tó consectetur nui. Bufonesco zagal cosica piticli zanguango estoy fatal de lo mío cabeza de viejo cuerpo de joven adipisicing droja tempor. Ahí va qué chorrazo aliqua vivo con tu madre en un castillo ayy qué gustico, soooy crossoverr aliqua enratonao ut asobinao et ut fresquete asquerosito ut. Páharo no te digo ná y te lo digo tó quis. Ojete moreno tontaco gaticos, nisi churretoso muchachada. Monetes ut traeros tol jamón chachachá regomello bocachoti nianoniano ut, hueles avinagrado enjuto mojamuto nostrud a tope con la maquinaria magna bonico del tó. Minim, es de traca horcate exercitation bajonaaa payacho tollina cosica. Pero qué pelazo pataliebre mangurrián tontiploster enim monguer Guaper pepino en la mano bufonesco cobete chotera ad, agazapao. Estoy fatal de lo mío gañán super ñoño saepe cacahué zagal bizcoché mamellas. Elit nianoniano gañán no te digo ná y te lo digo tó consectetur eveniet enratonao con las rodillas in the guanter minim gaticos, veniam. Bajonaaa enim ullamco veniam adipisicing ea droja bocachoti eveniet viejuno. Nisi magna nisi atiendee chiquititantantan vivo con tu madre en un castillo monetes, muchachada ayy qué gustico cartoniano coconut cobete tempor chavalada. Ju-já elit bizcoché tollina interneeeer ojete moreno zanguango tempor. Payacho eres un pirámidee es de traca, saepe a tope con la maquinaria te viste de torero chotera. Tunante cabeza de viejo cuerpo de joven super ñoño ahí va qué chorrazo."
+chanante_words = chanante_ipsum.split
+
+for i in 1..10 do
+	description = (0...160).map { chanante_words[rand(chanante_words.size)].to_s + ' ' }.join
+	c = Challenge.create!(title: "Challenge number #{i}", description: description.to_s)
+	for j in 0..(rand(4)) do
+		email = "#{chanante_words[rand(chanante_words.size)].to_s}@#{chanante_words[rand(chanante_words.size)].to_s}.es"
+		c.supporters.create!(email: email)
+	end
+end

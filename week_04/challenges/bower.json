@@ -1,0 +1,7 @@
+{
+	"name": "project name",
+	"dependencies":{
+		"bootstrap"						: "*"
+	}
+}
+

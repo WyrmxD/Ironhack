@@ -1,0 +1,34 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-8">
+		<h2><%= @challenge.title %></h2>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-8">
+		<h3>Description</h3>
+		<p><%= @challenge.description %></p>
+		<%= link_to('Edit', edit_challenge_path(@challenge)) %>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-4">
+		<h3>Support</h3>
+		<%= flash_message %>
+		<%= form_for [@challenge, @supporter] , html: { role: "form" } do |f| %>
+			<div class="form-group">
+			<%= f.text_field :email, placeholder: 'Your email' %><br>
+			</div>
+			<%= f.submit "Save" , class: "btn btn-default"  %>
+		<% end %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-8">
+		<h3>Supporters <%= total_supporters %></h3> 
+		<ul class="list-unstyled">
+		<% @challenge.supporters.each do | supporter | %>
+			<li><%= supporter.email %></li>
+		<% end %>
+		</ul>
+	</div>
+</div>
