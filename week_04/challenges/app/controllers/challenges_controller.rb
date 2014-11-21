@@ -3,7 +3,9 @@ class ChallengesController < ApplicationController
 	before_action :load_challenge, :only => [:edit, :show, :update, :destroy]
 
 	def index
-		@challenges = Challenge.all
+		@page = params[:page].to_i
+		@challenges = Challenge.paginate(@page)
+		@num_pages = (Challenge.count / Challenge::PER_PAGE).ceil
 	end
 
 	def new
