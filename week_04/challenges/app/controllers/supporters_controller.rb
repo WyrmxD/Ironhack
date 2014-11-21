@@ -7,10 +7,12 @@ class SupportersController < ApplicationController
 		@supporter = @challenge.supporters.create(supporter_params)
 		if !@supporter.new_record?
 			flash.now[:notice] = 'The supported was added!'
-			render 'challenges/show'
-		else
-			flash[:error] = 'The email was invalid!'
+			ChallengeMailer.new_support(@challenge, @supporter).deliver
 			redirect_to challenge_path(@challenge)
+		else
+			@challenge.reload
+			flash[:error] = 'The email was invalid!'
+			render 'challenges/show'
 		end
 	end
 
