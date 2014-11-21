@@ -41,3 +41,4 @@ gem 'spring',        group: :development
 gem 'byebug'
 gem 'quiet_assets'
 gem 'pry-rails'
+gem 'letter_opener'

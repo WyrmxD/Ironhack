@@ -1,4 +1,7 @@
 class ChallengesController < ApplicationController
+
+	before_action :load_challenge, :only => [:edit, :show, :update, :destroy]
+
 	def index
 		@challenges = Challenge.all
 	end
@@ -20,28 +23,29 @@ class ChallengesController < ApplicationController
 	end
 
 	def edit
-		@challenge = Challenge.find params[:id]
 	end
 
 	def show
-		@challenge = Challenge.find params[:id]
 		@supporter = Supporter.new()
 	end
 
 	def update
-		@challenge = Challenge.find(params[:id])
 		@challenge.update_attributes challenge_params
 		render 'show'
 	end
 
 	def destroy
-		challenge = Challenge.find(params[:id])
-		challenge.destroy
+		@challenge.destroy
 		redirect_to challenges_path
 	end
 
 	private
+
 	def challenge_params
 		params.require(:challenge).permit(:title, :description)
+	end
+
+	def load_challenge
+		@challenge = Challenge.find(params[:id])
 	end
 end

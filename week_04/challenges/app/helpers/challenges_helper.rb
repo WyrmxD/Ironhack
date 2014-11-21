@@ -25,4 +25,16 @@ module ChallengesHelper
 		end
 	end
 	
+	def last_challenges
+		if !@last_challenges.blank?
+			tags = content_tag :ul do
+				@last_challenges.collect do | challenge |
+					content_tag :li do
+						link_to(challenge.title, challenge_path(challenge))
+					end
+				end.join.html_safe
+			end
+			content_tag(:h2 ,'Last Challenges') + tags
+		end
+	end
 end

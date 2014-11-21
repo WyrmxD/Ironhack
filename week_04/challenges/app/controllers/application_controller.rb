@@ -10,4 +10,12 @@ class ApplicationController < ActionController::Base
 		render file: "public/404", status: 404, layout: false, handlers: [:erb], formats: [:html]
 	end
 
+	before_action :load_last_challenges
+
+	private 
+
+	def load_last_challenges
+		@last_challenges = Challenge.limit(3).order('created_at desc')
+	end
+
 end
