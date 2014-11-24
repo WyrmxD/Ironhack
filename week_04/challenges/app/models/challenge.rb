@@ -3,6 +3,8 @@ class Challenge < ActiveRecord::Base
 	validates :title , { uniqueness: true, presence: true , length: {maximum: 30} }
 	validates :description , { presence: true , length: {minimum: 20 } }
 
+	mount_uploader :poster, PosterUploader
+
 	PER_PAGE = 10.0
 
 	def self.paginate(page)

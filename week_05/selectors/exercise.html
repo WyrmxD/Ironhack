@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <style type="text/css">
+            * { margin: 5px;}
+
+            .hightlighted { background-color: yellow; }
+            .title { background-color: lightskyblue; }
+            .bordered { border: solid 2px;}
+            label {	display: block; margin: 2px 0; }
+            form { margin: 30px;}
+            #result { position: absolute; top: 50px; min-width: 100px; left: 70%; background-color: green; padding: 10px;}
+
+        </style>
+        <title>jQuery practice</title>
+    </head>
+    <body>
+        <h1 class="title">jQuery practice</h1>
+        <div id="myContent">
+            <p id="slogan">Write less, do more</p>
+            <p>jQuery Projects</p>
+            <ul>
+                <li class="basic red" data-likes="10000">jQuery</li>
+                <li id="jquery-ui" data-likes="1000">jQueryUI</li>
+                <li data-likes="100">jQueryMobile</li>
+                <li class="new" data-likes="10">SizzleJS</li>
+                <li class="new" data-likes="10">QUnitJS</li>
+            </ul>
+        </div>
+
+        <div>
+            <p class="links">Some useful links</p>
+            <a href="http://www.api.jquery.com/">jQuery API</a>
+            <a href="http://jqapi.com/">Alternative jQuery Documentation Browser</a>
+            <a href="http://www.selectorgadget.com/">SelectorGadget</a>
+        </div>
+        <form id="personal">
+            <label for="name">Name</label><input id="name" name="name" type="text" value="John Doe">
+            <label for="age-range">Age range</label>
+            <select id="age-range" name="age-range">
+                <option value="">Please select</option>
+                <option value="-20">Less than 20</option>
+                <option value="20-30">20 to 30</option>
+                <option value="30-40">30 to 40</option>
+                <option value="+40" selected="selected">More than 40</option>
+            </select>
+
+            <label for="love"><input type="checkbox" id="love" name="love" checked="checked">I love learning</label>
+
+            <p>Favourite color</p>
+            <label><input type="radio" id="color-red" name="color" value="red" checked="checked">Red</label>
+            <label><input type="radio" id="color-blue" name="color" value="blue">Blue</label>
+            <label><input type="radio" id="color-green" name="color" value="green">Green</label>
+            <label><input type="radio" id="color-yellow" name="color" value="yellow">Yellow</label>
+            <label><input type="radio" id="color-other" name="color" value="other">Other</label>
+        </form>
+        <div id="parentResult"><div id="result">Result </div></div>
+
+        <div id="exchange">
+            <label for="amount">Money to convert</label><input id="amount" type="text" value="100">
+            <select id="currency" name="currency">
+                <option value="euro">€</option>
+                <option value="dollar">$</option>
+                <option value="pound">£</option>
+                <option value="yen">¥</option>
+            </select>
+            <div id="exchange-result"></div>
+        </diV>
+
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="selectors.js"></script>
+
+    </body>
+</html>
