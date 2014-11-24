@@ -15,7 +15,7 @@
 //$('#result').slideUp('tope-slow')
 
 // Set the default animation speed to 2000
-//$.fx.speeds['default'] = 2000;
+//$.fx.speeds['_default'] = 2000;
 
 // Slide jquery projects and when it's done show on the result div that it's done
 //$('#myContent').children().eq(2).slideUp(function(){
