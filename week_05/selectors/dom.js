@@ -11,7 +11,7 @@ $(".new").addClass("hightlighted")
 $("h1").removeClass("title")
 
 // Specify the age range in 20-30
-$("option").val('20-30').prop("selected", true)
+$("#age-range option").val('20-30').prop("selected", true)
 
 // Specify the age range in 20-30 using travesing filters
 $("option").val('20-30').prop("selected", true)
@@ -32,7 +32,7 @@ $("div#result").append( $('select[name=age-range]').val() )
 $("div#result").append( $("#jquery-ui").data('likes') )
 
 // Adds 100 to the number of likes and show it in the result div
-$('li').data('likes', $('li').data('likes') + 100  )
+$('li').data('likes', $('li').data('likes') + 100  ) // me lo he inventado ;D
 
 // Show the absolute position of result in the console
 var result = $('#result').offset();
@@ -71,8 +71,8 @@ $("input[id|='color']").attr('name', function() {
 })
 
 // ver cada color
-$("input[id|='color']").css('background-color', function() {
-	return $(this).val();
+$('label').has("input[id|='color']").css('color', function() {
+	return $(this).children().first().val();
 })
 
 
