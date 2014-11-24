@@ -25,7 +25,7 @@
 //$("p").last().css("border", "solid 1px");
 
 // The label element that has an element with the id love
-$("label").children("#love")
+$("label").has("#love")
 
 // The li element that has no new class
 $("li").not(".new")
@@ -52,9 +52,9 @@ $("#jquery-ui").parent()
 $("p#slogan").siblings()
 
 // The p elements not inside myContent div
-$("#myContent p").not()
+$("p").not("#myContent p")
 
 // The li elements that starts with jQuery. Tip: http://www.w3schools.com/jsref/jsref_substring.asp
-$("li").filter(function(index) {
+$("li").filter(function() {
 	return $(this).text().substring(0, 6) === 'jQuery';
 })
