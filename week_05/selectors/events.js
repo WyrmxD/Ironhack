@@ -5,9 +5,9 @@ function myFunction() {
 }
 
 // When you click on the input to write my name the previous name is deleted
-$('#name').click(function(){
-	$(this).val('')
-})
+//$('#name').click(function(){
+//	$(this).val('')
+//})
 
 // When you move your mouse over one jQuery projects it change the background-color to silver
 $('#myContent').delegate("li", "mouseover", function(){
@@ -73,6 +73,19 @@ $('#myContent').click(function(event){
 
 
 // When you select a part of the input name the selected part is shown in the result div
+// from Stackoverflow
+function getSelectionText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    }
+    return text;
+}
+$('#name').select(function(){
+	$('#result').text( getSelectionText() )
+})
 
 /**
  * Final round
