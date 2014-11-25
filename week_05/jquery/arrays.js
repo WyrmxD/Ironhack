@@ -30,7 +30,7 @@ $.each(pow2, function(index, element){
 pow_doubled = $.map(pow2, function(element, index){
 	return 2*element
 })
-	console.log(pow_doubled)
+console.log(pow_doubled)
 
 // Sum the value of all of numbers of the array
 var sum = 0
