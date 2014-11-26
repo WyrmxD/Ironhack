@@ -1,0 +1,125 @@
+body {
+    margin: 0px;
+}
+
+
+#exercices {
+    width: 800px;
+    background-color: grey;
+}
+
+#logo {
+	background-color: yellow;
+	height: 100px;
+	width: 100px;
+	float: right;
+}
+
+#header {
+	background-color: aqua;
+	height: 100px;
+}
+
+#signin{
+	background-color: cadetblue;
+	width: 100px;
+	position: relative;
+	float: right;
+	margin-top: 82px;
+}
+
+#leftbar{
+	background-color: antiquewhite;
+	float: left;
+	height: 700px;
+	width: 100px;
+}
+
+#rightbar {
+	background-color: brown;
+	float: right;
+	width: 100px;
+	height: 700px;
+}
+
+#main {
+	width: 700px;
+}
+
+#column1 {
+	width: 300px;
+	float: right;
+}
+
+#content11 {
+	background-color: darkgreen;
+	height: 200px;
+}
+
+#content12 {
+	background-color: greenyellow;
+	width: 150px;
+	height: 150px;
+	float: left
+}
+
+#content13 {
+	background-color: green;
+	width: 150px;
+	height: 200px;
+	margin-left: 150px
+}
+
+#content14 {
+	background-color: darkorange;
+	width: 150px;
+	height: 150px;
+	position: absolute;
+	margin-top: -50px;
+}
+
+#content15 {
+	background-color: orange;
+	width: 150px;
+	height: 300px;
+	float: right;
+}
+
+#content16 {
+	background-color: orangered;
+	width: 150px;
+	height: 200px;
+	position: absolute;
+	margin-top: 100px;
+}
+
+#column2 {
+	background-color: black;
+	width: 300px;
+	height: 700px;
+	margin-left: 100px;
+}
+
+#content21 {
+	background-color: blue;
+	height: 220px;
+	position: absolute;
+	margin-top: 250px;
+	width: 300px;
+}
+
+#content22 {
+	background-color: aqua;
+	height: 250px;
+	width: 300px;
+	position: absolute;
+	margin-top: 450px;
+}
+
+#content23 {
+	background-color: lightblue;
+	height: 220px;
+	position: absolute;
+	margin-top: 30px;
+	width: 300px
+}
