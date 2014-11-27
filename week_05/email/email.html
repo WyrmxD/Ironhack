@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <div id="email">
+      <div id="header">
+        <div id="logo"></div>
+        <div id="search-box"></div>
+        <div id="user-profile"></div>
+      </div>
+      <div id="sidebar">
+        <div id="compose"></div>
+        <div id="labels">
+          <ul id="main-labels">
+            <li>Inbox</li>
+            <li>Starred</li>
+            <li>Sent mail</li>
+            <li>Drafts</li>
+            <li>Spam</li>
+          </ul>
+          <ul id="personal-labels">
+            <li>Friends</li>
+            <li>Professional</li>
+            <li>Events</li>
+            <li>Things</li>
+          </ul>
+        </div>
+        <div id="chat">
+          <div id="chat-profile"></div>
+          <ul id="recent-conversations">
+            <li>Charly Crews</li>
+            <li>Jack Gallagher</li>
+            <li>Richard Castle</li>
+            <li>Sheldon Cooper</li>
+          </ul>
+        </div>
+      </div>
+      <div id="main">
+        <ul id="email-actions">
+          <li id="select-all"></li>
+          <li id="check-emails"></li>
+          <li id="more"></li>
+        </ul>
+        <ul id="emails">
+          <li data-id="1234">
+            <div class="checked" data-checked="false"></div>
+            <div class="starred" data-starred="true"></div>
+            <div class="from">Charlie Crews</div>
+            <div class="subject">I'm back</div>
+            <div class="preview">After been 12 years in prison...</div>
+          </li>
+          <li data-id="2345">
+            <div class="checked" data-checked="false"></div>
+            <div class="starred" data-starred="false"></div>
+            <div class="from">Jack Gallagher</div>
+            <div class="subject">The psiquiatric revolution</div>
+            <div class="preview">I want to change the way this hospital...</div>
+          </li>
+          <li data-id="3456">
+            <div class="checked" data-checked="false"></div>
+            <div class="starred" data-starred="true"></div>
+            <div class="from">Richard Castle</div>
+            <div class="subject">Niki Heat</div>
+            <div class="preview">The detective Niki Heat....</div>
+          </li>
+          <li data-id="4567">
+            <div class="checked" data-checked="false"></div>
+            <div class="starred" data-starred="false"></div>
+            <div class="from">Sheldon Cooper</div>
+            <div class="subject">I'm going to win the Noble price</div>
+            <div class="preview">Dear poor minds, probably you...</div>
+          </li>
+        </ul>
+      </div>
+      <div id="footer">
+        <div id="usage">10GB 70% of 15GB</div>
+        <div id="brand">My Mail Company</div>
+        <div id="terms">Terms & privacy</div>
+        <div id="last-activity">Last account activity: 2 minutes ago</div>
+      </div>
+    </div>
+    <div id="blank-email">
+      <div id="blank-close"></div>
+      <div><label for="blank-to">To</label><input id="blank-to" name="to" type="text" value=""></div>
+      <div><label for="blank-from">From</label><input id="blank-from" name="from" type="text" value=""></div>
+      <div><label for="blank-subject">Subject</label><input id="blank-subject" name="subject" type="text" value=""></div>
+      <div><textarea id="blank-content" name="content" rows="4" cols="50"></textarea></div>
+      <div id="blank-bottom">
+        <div id="send"></div>
+        <div id="trash"></div>
+      </div>
+    </div>
+
+    <script src="/js/jquery-1.11.0.min/index.js"></script>
+    <script src="js/lib.js"></script>
+  </body>
+</html>

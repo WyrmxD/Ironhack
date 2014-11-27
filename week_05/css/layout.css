@@ -5,7 +5,7 @@ body {
 
 #exercices {
     width: 800px;
-    background-color: grey;
+    background-color: white;
 }
 
 #logo {
@@ -38,8 +38,9 @@ body {
 #rightbar {
 	background-color: brown;
 	float: right;
-	width: 100px;
-	height: 700px;
+	width: 90px;
+	height: 690px;
+	margin-top: 10px;
 }
 
 #main {

@@ -1,0 +1,92 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+body {
+	background-color: rgb(240, 240, 240);
+	margin: 0px;
+	font-family: sans-serif;
+	height: 100%;
+}
+
+#header {
+	background-color: gold;
+	height: 100px;
+}
+
+#logo {
+	background-image: url("/img/email.png");
+	width: 80px;
+	height: 80px;
+	background-repeat: no-repeat;
+	background-size: 80px;
+	position: absolute;
+	margin: 10 0 0 20px;
+}
+
+#sidebar {
+	background-color: gold;
+	height: 470px;
+	width: 170px;
+	padding: 10px;
+	display: inline-block;
+	float: left;
+}
+
+#sidebar ul {
+	list-style-type: none;
+}
+
+ul[id$="-labels"] {
+	border: 1px solid white;
+	padding: 10px;
+}
+
+#recent-conversations {
+	border: 1px solid white;
+	padding: 10px;	
+}
+
+#email {
+	background-color: palegoldenrod;
+}
+
+#email-actions {
+	position: absolute;
+	margin-top: -115px;
+}
+
+#main {
+	background-color: palegoldenrod;
+}
+
+#main ul {
+	list-style-type: none;	
+}
+
+#emails li div {
+	display: inline-block;
+}
+
+#emails li {
+	padding: 10px;
+	border-bottom: 2px solid white;
+}
+
+.from {
+	font-style: italic;
+	font-weight: bold;
+	padding: 0 20 0 20;
+}
+
+.item-focus {
+	background-color: goldenrod;
+}
+
+#footer {
+	background-color: gold;
+	padding: 15px;
+	font-size: small;
+	text-align: center;
+	clear: both;
+}
