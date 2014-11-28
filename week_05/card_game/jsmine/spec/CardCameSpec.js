@@ -25,7 +25,7 @@ describe("My card game", function() {
 			}).toThrow('Error invalid hand');
 		});
 
-		it("may may have a winner with two rounds", function() {
+		it("may have a winner with two rounds", function() {
 			expect(CardGame.whoWins(['1','1'],['2','2'])).toBe('Player2 wins 2 to 0');
 		});
 
