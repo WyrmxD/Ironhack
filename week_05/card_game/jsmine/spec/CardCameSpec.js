@@ -27,7 +27,26 @@ describe("My card game", function() {
 
 		it("may have a winner with two rounds", function() {
 			expect(CardGame.whoWins(['1','1'],['2','2'])).toBe('Player2 wins 2 to 0');
+			expect(CardGame.whoWins(['2','2'],['1','1'])).toBe('Player1 wins 2 to 0');
 		});
+
+		it("may have a tie with two rounds", function() {
+			expect(CardGame.whoWins(['1','1'],['1','1'])).toBe('Tie');
+		});
+
+		it("may rise an error with empty card on a single round", function() {
+			expect(function(){
+				CardGame.whoWins(['1',''],['1','1'])
+			}).toThrow('Error invalid hand');
+			// expect(function(){
+			// 	CardGame.whoWins(['1'],[''])
+			// }).toThrow('Error invalid hand');
+			// expect(function(){
+			// 	CardGame.whoWins([''],[''])
+			// }).toThrow('Error invalid hand');
+		});
+
+
 
 	});
 
