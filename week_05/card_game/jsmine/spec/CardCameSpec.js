@@ -38,12 +38,18 @@ describe("My card game", function() {
 			expect(function(){
 				CardGame.whoWins(['1',''],['1','1'])
 			}).toThrow('Error invalid hand');
-			// expect(function(){
-			// 	CardGame.whoWins(['1'],[''])
-			// }).toThrow('Error invalid hand');
-			// expect(function(){
-			// 	CardGame.whoWins([''],[''])
-			// }).toThrow('Error invalid hand');
+			expect(function(){
+				CardGame.whoWins(['1','1'],['1',''])
+			}).toThrow('Error invalid hand');
+			expect(function(){
+				CardGame.whoWins(['',''],['',''])
+			}).toThrow('Error invalid hand');
+		});
+
+		it("may rise an error with different number of cards", function() {
+			expect(function(){
+				CardGame.whoWins(['1','J'],['1'])
+			}).toThrow('Error invalid hand');
 		});
 
 

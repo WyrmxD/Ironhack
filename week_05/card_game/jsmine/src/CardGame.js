@@ -8,7 +8,7 @@ var CardGame = {};
 		var score1 = 0;
 		var score2 = 0;
 
-		if( !isValid(hand1) || !isValid(hand2) ){
+		if( !isValid(hand1) || !isValid(hand2) || ( hand1.length != hand2.length ) ) {
 			throw 'Error invalid hand';				
 		}
 
