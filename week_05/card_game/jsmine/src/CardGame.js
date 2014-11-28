@@ -2,20 +2,21 @@ var CardGame = {};
 
 (function(ns){
 
+	var CARDS = ['1','2','3','4','5','6','7','8','9','J','Q','K'];
 
 	ns.whoWins = function(hand1, hand2){
 		var score1 = 0;
 		var score2 = 0;
 
+		if( !isValid(hand1) || !isValid(hand2) ){
+			throw 'Error invalid hand';				
+		}
+
 		for(var i=0, len = hand1.length; i < len; i++ ){
 
-			if(hand1[i] == '' || hand2[i] == ''){ 
-				throw 'Error invalid hand';
-			}
-
-			if(hand2[i] > hand1[i]){
+			if( CARDS.indexOf(hand2[i])  > CARDS.indexOf(hand1[i]) ){
 				score2++;
-			}else if(hand1[i] > hand2[i]){
+			}else if( CARDS.indexOf(hand1[i]) > CARDS.indexOf(hand2[i]) ){
 				score1++;
 			}		
 		}
@@ -33,6 +34,15 @@ var CardGame = {};
 		}else{
 			return "Tie";
 		} 
+	}
+
+	var isValid = function(hand){
+		for(var i=0, len = hand.length; i < len; i++ ){
+			if( CARDS.indexOf( hand[i] ) < 0 ){
+				return false;
+			}
+		}
+		return true;
 	}
 
 }(CardGame));
