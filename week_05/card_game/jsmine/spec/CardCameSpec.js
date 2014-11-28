@@ -27,7 +27,7 @@ describe("My card game", function() {
 
 		it("may have a winner with two rounds", function() {
 			expect(CardGame.whoWins(['1','1'],['2','2'])).toBe('Player2 wins 2 to 0');
-			expect(CardGame.whoWins(['2','2'],['1','1'])).toBe('Player1 wins 2 to 0');
+			expect(CardGame.whoWins(['K','K'],['Q','Q'])).toBe('Player1 wins 2 to 0');
 		});
 
 		it("may have a tie with two rounds", function() {
@@ -51,6 +51,7 @@ describe("My card game", function() {
 				CardGame.whoWins(['1','J'],['1'])
 			}).toThrow('Error invalid hand');
 		});
+
 
 
 
