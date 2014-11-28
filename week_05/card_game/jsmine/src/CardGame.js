@@ -7,11 +7,12 @@ var CardGame = {};
 		var score1 = 0;
 		var score2 = 0;
 
-		if(hand1 == '' || hand2 == ''){ 
-			throw 'Error invalid hand';
-		}
-
 		for(var i=0, len = hand1.length; i < len; i++ ){
+
+			if(hand1[i] == '' || hand2[i] == ''){ 
+				throw 'Error invalid hand';
+			}
+
 			if(hand2[i] > hand1[i]){
 				score2++;
 			}else if(hand1[i] > hand2[i]){
