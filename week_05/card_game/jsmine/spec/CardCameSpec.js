@@ -16,13 +16,13 @@ describe("My card game", function() {
 		it("may rise an error with empty card on a single round", function() {
 			expect(function(){
 				CardGame.whoWins([''],['1'])
-			}).toThrow('Error invalid hand');
+			}).toThrow('Invalid game, wrong cards');
 			expect(function(){
 				CardGame.whoWins(['1'],[''])
-			}).toThrow('Error invalid hand');
+			}).toThrow('Invalid game, wrong cards');
 			expect(function(){
 				CardGame.whoWins([''],[''])
-			}).toThrow('Error invalid hand');
+			}).toThrow('Invalid game, wrong cards');
 		});
 
 		it("may have a winner with two rounds", function() {
@@ -37,19 +37,19 @@ describe("My card game", function() {
 		it("may rise an error with empty card on a single round", function() {
 			expect(function(){
 				CardGame.whoWins(['1',''],['1','1'])
-			}).toThrow('Error invalid hand');
+			}).toThrow('Invalid game, wrong cards');
 			expect(function(){
 				CardGame.whoWins(['1','1'],['1',''])
-			}).toThrow('Error invalid hand');
+			}).toThrow('Invalid game, wrong cards');
 			expect(function(){
 				CardGame.whoWins(['',''],['',''])
-			}).toThrow('Error invalid hand');
+			}).toThrow('Invalid game, wrong cards');
 		});
 
 		it("may rise an error with different number of cards", function() {
 			expect(function(){
 				CardGame.whoWins(['1','J'],['1'])
-			}).toThrow('Error invalid hand');
+			}).toThrow('Invalid game, wrong cards);
 		});
 
 

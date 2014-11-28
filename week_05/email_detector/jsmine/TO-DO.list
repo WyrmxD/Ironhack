@@ -1,9 +1,11 @@
 TO-DO
 
-emailParser([])                                     -> []
-emailParser(["pablo@mail.mail"])					-> ["pablo@mail.mail"]
-emailParser(["@.com"])								-> []
-emailParser(["inakimarikita.mail"])					-> []
-emailParser(["pablo@mail.com", "inaki@pepe.es"])	-> ["pablo@mail.com", "inaki@pepe.es"]
-emailParser(["inaki@mail.com", "sddkfj@acom"]) 		-> ["inaki@mail.com"]
-emailParser(["inaki@mail.comAtopeee", "sddkfj@a"])	-> ["inaki@mail.comAtopeee"]
+extracEmails([])                                     -> []
+extracEmails([""])									-> []
+extracEmails(["pablo@mail.mail"])					-> ["pablo@mail.mail"]
+extracEmails(["@.com"])								-> []
+extracEmails(["inakimarikita.mail"])					-> []
+extracEmails(["in^akimarikita@mail.mail"])			-> []
+extracEmails(["pablo@mail.com", "inaki@pepe.es"])	-> ["pablo@mail.com", "inaki@pepe.es"]
+extracEmails(["inaki@mail.com", "sddkfj@acom"]) 		-> ["inaki@mail.com"]
+extracEmails(["inaki@mail.comAtopeee", "sddkfj@a"])	-> ["inaki@mail.comAtopeee"]
