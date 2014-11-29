@@ -22,7 +22,13 @@ Ironhack exercises and week work.
 [My Favourite Movie](https://github.com/WyrmxD/favmovie) - CSS, HTML
 
 
-## Week 1
+## [Week 1](https://github.com/WyrmxD/Ironhack/tree/master/week_01)
+###### Teacher: Alfredo Casado - [@AlfredoCasado](https://twitter.com/AlfredoCasado)
+
+This week is a first introduction about OOP using Ruby as the programming language. Starting with the basic concepts at the beginning of the week and scratching programming patterns at the end. Working on very simple examples that allow us to write and refactor using pair-programming for the first time in the bootcamp.
+
+[Blog post about OOP and Ruby](http://wyrmxd.wordpress.com/2014/11/02/ironhack-semana-1-programacion-orientada-a-objetos-en-ruby/)
+
 ## Week 2
 ## Week 3
 ## Week 4
