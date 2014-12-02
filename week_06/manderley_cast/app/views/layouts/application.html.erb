@@ -17,6 +17,9 @@
     <%= link_to "Login", new_user_session_path %>
   <% end %>
 
+  <% if flash[:error] %>
+    <p><%= flash[:error] %></p>
+  <% end %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 

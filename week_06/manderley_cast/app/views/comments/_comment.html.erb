@@ -1,9 +1,17 @@
   <p>
     <strong>Author:</strong>
-    <%= comment.user.username.capitalize %>
+      <div class="user <%= comment.user.role %>">
+        <%= comment.user.username.capitalize %>
+    </div>
   </p>
  
   <p>
     <strong>Comment:</strong>
     <%= comment.body %>
   </p>
+
+<% if policy(comment).update? %>
+	<div class="actions">
+		<%= link_to "Edit", edit_comment_path(comment) %>
+	</div>
+<% end %>

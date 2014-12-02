@@ -15,16 +15,19 @@ class MoviesController < ApplicationController
   # GET /movies/new
   def new
     @movie = Movie.new
+    authorize @movie
   end
 
   # GET /movies/1/edit
   def edit
+    authorize @movie
   end
 
   # POST /movies
   # POST /movies.json
   def create
     @movie = Movie.new(movie_params)
+    authorize @movie
 
     respond_to do |format|
       if @movie.save
@@ -40,6 +43,9 @@ class MoviesController < ApplicationController
   # PATCH/PUT /movies/1
   # PATCH/PUT /movies/1.json
   def update
+
+    authorize @movie
+    
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
@@ -54,10 +60,17 @@ class MoviesController < ApplicationController
   # DELETE /movies/1
   # DELETE /movies/1.json
   def destroy
+    authorize @movie
     @movie.destroy
     respond_to do |format|
       format.html { redirect_to movies_url }
       format.json { head :no_content }
+      format.js do
+        render(
+          partial: 'destroy_animation',
+          locals: {resource: @movie} 
+        )
+      end
     end
   end
 
