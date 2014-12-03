@@ -1,0 +1,2 @@
+module KissHelper
+end
