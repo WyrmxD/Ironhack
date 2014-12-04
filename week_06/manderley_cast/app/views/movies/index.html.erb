@@ -1,0 +1,41 @@
+<h1>Listing movies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Duration</th>
+      <th>Synopsis</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= content_tag_for(:tr, @movies) do |movie| %>
+    <td><%= movie.title %></td>
+    <td><%= movie.year %></td>
+    <td><%= movie.duration %></td>
+    <td><%= movie.synopsis %></td>
+    <td><%= link_to 'Show', movie %></td>
+    <td>
+      <% if policy(movie).update? %>
+      <%= link_to 'Edit', edit_movie_path(movie) %>
+      <% end %>
+    </td>
+    <td>
+      <% if policy(movie).destroy? %>
+      <%= link_to 'Destroy', movie, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </td>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if policy(Movie.new).create? %>
+  <%= link_to 'New Movie', new_movie_path %>
+<% end %>

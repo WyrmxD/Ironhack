@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Manderley</title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+
+</head>
+
+  <body class="padding margin">
+
+    <% if flash[:error] %>
+    <p>
+      <%= flash[:error] %>
+    </p>
+    <% end %>
+
+    <header class="padding-top">
+      <% if user_signed_in? %>
+        <%= link_to "Logout", destroy_user_session_path,
+                method: :delete,
+                data: {confirm: 'Are you sure?'} %>
+      <% else %>
+        <%= link_to "Sign in", new_user_session_path %>
+      <% end %>
+    </header>
+
+    <section class="row bck light">
+
+    <%= yield %>
+
+    </section>
+
+    <footer>
+    </footer>
+
+  </body>
+
+</html>

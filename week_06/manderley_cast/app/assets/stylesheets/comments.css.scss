@@ -1,0 +1,13 @@
+.user.admin::before{
+  content: "★";
+}
+
+.user.yoda{
+  background: image-url("yoda-icon.gif") no-repeat 80px -15px;
+  height: 25px;
+  padding-top: 10px;
+}
+
+#comment_form {
+  display: none;
+}

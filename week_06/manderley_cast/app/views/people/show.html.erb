@@ -1,0 +1,30 @@
+<p>
+  <strong>Name:</strong>
+  <%= @person.first_name %>
+</p>
+
+<p>
+  <strong>Surname:</strong>
+  <%= @person.last_name %>
+</p>
+
+
+<% if policy(Oldvote.user(current_user).person(@person).find_or_initialize_by({})).create? %>
+  <div id="old_voting_system">
+    <%= link_to "Oldie!", person_oldie_path(@person) %>
+    |
+    <%= link_to "Youngster!", person_youngster_path(@person) %>
+  </div>
+<% end %>
+
+
+<% if @person.oldvotes.present? %>
+  <div id="oldvotes">
+    <p>
+      <%= @person.oldvotes.oldthy.size %> out of <%= @person.oldvotes.size %> people think is close to death.
+    </p>
+    <p>
+      <%= @person.oldvotes.youngthy.size %> out of <%= @person.oldvotes.size %> people think he is a baby.
+    </p>
+  </div>
+<% end %>

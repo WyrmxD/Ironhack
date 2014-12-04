@@ -1,0 +1,29 @@
+<%= form_for(@cast, url: movie_create_cast_path(@movie)) do |f| %>
+  <% if @cast.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cast.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+      <ul>
+      <% @cast.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :person_id %>
+    <%= f.select :person_id,
+    Person.all.map {|p| [ p.complete_name, p.id ] } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role %>
+    <%= f.select :role, 
+       Cast::ROLES.map {|r| [r.titleize, r]} %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
