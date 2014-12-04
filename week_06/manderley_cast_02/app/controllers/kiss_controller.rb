@@ -3,7 +3,7 @@ class KissController < ApplicationController
 	end
 
 	def ajax
-		render json: Comment.first
+		render json: Movie.first
 	end
 
 	def echo

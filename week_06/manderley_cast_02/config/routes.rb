@@ -14,7 +14,6 @@ Manderley::Application.routes.draw do
     post "cast", to: 'movies#create_cast', as: :create_cast
   end
 
-
   resources :people, shallow: true
 
   # The priority is based upon order of creation: first created -> highest priority.
