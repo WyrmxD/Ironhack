@@ -46,7 +46,11 @@ We started using Test Driven Development with RSpec and Ruby, learning how to ma
 This week we started learning some HTML5 APIs: geolocation, local storage, notifications, responsive web design..
 On thursday we worked on a [larger exercise](https://github.com/WyrmxD/Ironhack/tree/master/week_03/thursday_project) for testing our knowledge using some JS and HTML5 APIs. The last day of the week Javi introduced us to [workflows](https://github.com/WyrmxD/Ironhack/tree/master/week_03/workflow): grunt, gulp, npm, bower and friends.
 
-## Week 4 The Rails Way
+## [Week 4](https://github.com/WyrmxD/Ironhack/tree/master/week_04) The Rails Way
+###### Teacher: [Fernando Blat](https://twitter.com/ferblape)
+
+This week we have benn learning the Rails basics: routes, controller CRUD and MVC, assets, layouts, partials, helpers, scopes, filters and so on. 
+
 ## [Week 5](https://github.com/WyrmxD/Ironhack/tree/master/week_05) Javascript time
 ###### Teacher: [Luis Rovirosa](https://twitter.com/luisrovirosa) & [Carlos Blé](https://twitter.com/carlosble)
 
@@ -57,4 +61,4 @@ The last two days Carlos [teached us](https://twitter.com/PabloLaVegui/status/53
 ## [Week 6](https://github.com/WyrmxD/Ironhack/tree/master/week_06) Advanced Rails
 ###### Teacher: [Sergio Arbeo](https://twitter.com/Serabe)
 
-This we we have taken a deep sight through [Authentication (Devise) and Autorization (Pundit)](https://github.com/WyrmxD/Ironhack/tree/master/week_06/manderley_cast_01), [tested models and controllers](https://github.com/WyrmxD/Ironhack/tree/master/week_06/manderley_cast_04) with RSpec, understanded how AJAX and JSON can work together as an API with serializers in Rails and learned how to make our own [Internationalization](https://github.com/WyrmxD/Ironhack/tree/master/week_06/manderley_cast) system.
+This week we have taken a deep sight through [Authentication (Devise) and Autorization (Pundit)](https://github.com/WyrmxD/Ironhack/tree/master/week_06/manderley_cast_01), [tested models and controllers](https://github.com/WyrmxD/Ironhack/tree/master/week_06/manderley_cast_04) with RSpec using traits and Factory Girl, understanded how AJAX and JSON can work together as an API with serializers in Rails and learned how to make our own [Internationalization](https://github.com/WyrmxD/Ironhack/tree/master/week_06/manderley_cast) system.
