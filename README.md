@@ -54,5 +54,7 @@ This week we have explored [JQuery capabilities](https://github.com/WyrmxD/Ironh
 The last two days Carlos [teached us](https://twitter.com/PabloLaVegui/status/538491900077293568) how to perform a better pair-programming usin TDD with Jasmine and JavaScript. We have deepened in JavaScript [learning through koans](https://github.com/WyrmxD/Ironhack/tree/master/week_05/jasmine/jsmine).
 
 
-## Week 6 Advanced Rails
+## [Week 6](https://github.com/WyrmxD/Ironhack/tree/master/week_06) Advanced Rails
+###### Teacher: [Sergio Arbeo](https://twitter.com/Serabe)
 
+This we we have taken a deep sight through [Authentication (Devise) and Autorization (Pundit)](https://github.com/WyrmxD/Ironhack/tree/master/week_06/manderley_cast_01), [tested models and controllers](https://github.com/WyrmxD/Ironhack/tree/master/week_06/manderley_cast_04) with RSpec, understanded how AJAX and JSON can work together as an API with serializers in Rails and learned how to make our own [Internationalization](https://github.com/WyrmxD/Ironhack/tree/master/week_06/manderley_cast) system.
