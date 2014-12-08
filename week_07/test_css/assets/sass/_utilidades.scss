@@ -1,0 +1,26 @@
+@mixin media-object($media_margin, $img_margin){
+	margin: $media_margin;
+	overflow:hidden; 
+	_overflow:visible; 
+	zoom:1;
+	.bd {
+		overflow:hidden; 
+		_overflow:visible; 
+		zoom:1;
+	}
+	.img {
+		float:left; 
+		margin-right: $img_margin;
+	}
+	.imgExt {
+		float: right; 
+		margin-left: $img_margin;
+	}
+	.img, 
+	.imgExt {
+		img {
+			display:block;
+		}
+	}
+
+}

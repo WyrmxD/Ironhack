@@ -1,0 +1,24 @@
+
+.media {
+	margin: $media_margin;
+}
+
+.media, .bd {
+	overflow:hidden; 
+	_overflow:visible; 
+	zoom:1;
+}
+
+.media .img {
+	float:left; 
+	margin-right: $media_margin;
+}
+
+.media .img img, .media .imgExt img {
+	display:block;
+}
+
+.media .imgExt{
+	float: right; 
+	margin-left: $media_margin;
+}

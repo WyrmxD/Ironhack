@@ -1,0 +1,11 @@
+@import "variables";
+@import "utilidades";
+
+
+.status{
+	@include media-object($media_margin, $img_margin);	
+}
+
+.comment{
+	@include media-object($media_margin, $img_margin);	
+}
