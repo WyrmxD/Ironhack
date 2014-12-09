@@ -1,0 +1,27 @@
+
+.media-object{
+	margin: $media_margin;
+	overflow:hidden; 
+	_overflow:visible; 
+	zoom:1;
+}
+
+.media-object__bd{
+	overflow:hidden; 
+	_overflow:visible; 
+	zoom:1;
+}
+
+.media-object__img{
+	float:left; 
+	margin-right: $img_margin;
+}
+
+.media-object__imgExt{
+	float: right; 
+	margin-left: $img_margin;
+}
+
+.media-object__img, .media-object__imgExt img{
+	display: block;
+}

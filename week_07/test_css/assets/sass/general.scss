@@ -1,11 +1,39 @@
 @import "variables";
 @import "utilidades";
+@import "add_contact";
 
 
-.status{
-	@include media-object($media_margin, $img_margin);	
+%status{ // Only for testing
+	@include media-object($media_margin, $img_margin);
 }
 
-.comment{
-	@include media-object($media_margin, $img_margin);	
+.status {
+	@extend %status;
+	img {
+		width: $status_img_size;
+	}	
+	p.normal_size {
+		font-size: $status_normal_size;
+	}
+	p.medium_size {
+		font-size: $status_medium_size;
+	}
+}
+
+
+%comment{
+	@include media-object($media_margin, $img_margin);
+}
+
+.comment {
+	@include media-object($media_margin, $img_margin);
+	img {
+		width: $comment_img_size;
+	}
+	p.normal_size {
+		font-size: $comment_normal_size;
+	}
+	p.medium_size {
+		font-size: $comment_medium_size;
+	}
 }

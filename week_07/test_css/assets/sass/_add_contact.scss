@@ -1,0 +1,26 @@
+* {
+	box-sizing: border-box;
+}
+
+.wrapper {
+	width: 1200px;
+	margin: auto;
+	font-size: 0;
+}
+
+.contact {
+	@include media-object($media_margin, $img_margin);
+	border: 1px solid black;
+	display: inline-block;
+	width: 300px;
+	margin: 0;
+	img {
+		width: $contact_img_size;
+	}
+	p.normal_size {
+		font-size: $contact_normal_size;
+	}
+	p.medium_size {
+		font-size: $contact_medium_size;
+	}
+}
